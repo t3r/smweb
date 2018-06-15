@@ -126,7 +126,7 @@ class RequestDAO extends PgSqlDAO implements IRequestDAO {
         return json_encode($reqArray);
     }
     
-    private function arrayObject(\model\Object $object) {
+    private function arrayObject(\model\TheObject $object) {
         $objPos = $object->getPosition();
         $offset = $objPos->getElevationOffset();
         
