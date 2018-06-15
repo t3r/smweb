@@ -1,0 +1,101 @@
+Version 1.1.6 12/06/06
+======================
+- Everything is gittified now. So please use the git history functions, this file will get deprecated.
+
+Version 1.1.5 12/02/27
+======================
+- Gitted. Submissions welcome (To-do list first, please).
+
+Version 1.1.4 12/01/31
+======================
+- Put password management out of web server access.
+- Preparing for GIT... ;-)
+
+Version 1.1.3 12/01/28
+======================
+- Put more coherence into mass import. 100 lines now everywhere.
+- Elevation=0/0.0 is now OK ;-) Thanks Martin for noticing.
+
+Version 1.1.2 12/01/23
+======================
+- Edition and deletion script in production.
+- Updated maps to reflect recent changes in layers.
+- Now showing the number of static models in DB.
+
+Version 1.1.1 12/01/04
+======================
+- Adding ob_text when doing a mass import.
+- Edit shared object script terminated - testing.
+
+Version 1.1 11/12/31
+====================
+- Mass shared import scripts terminated - testing.
+
+Version 1.04 11/12/23
+=====================
+- Corrected 'feet' into 'meters'.
+- Shared positions queries (families, objects...) now sorted alphabetically.
+
+Version 1.03 11/12/15
+=====================
+- Realigned forms (Thanks Gijs for noticing).
+- Deletion scripts terminated - testing.
+
+Version 1.02 11/12/14
+=====================
+- Deleted the "0" default values for heading and elevation as well. Let it for offset.
+- Unquoted the numerical values.
+- Updated SQL query to always insert NULL as offset is no value or 0 is provided.
+- Changed DB role name.
+- Went into production.
+
+Version 1.01 11/12/07
+=====================
+- Fixed typos in check_shared.php.
+- Fixed typo in submission.php.
+- Deleted the "0" default values from longitude/latitude entries to avoid copy/paste issues.
+- Corrected "altitude" into "elevation".
+- Inverted latitude and longitude to keep it like the STG file format.
+
+Version 1.0 11/12/01
+====================
+- Pending -> Validation workflow validated.
+- Made all URLs in the mail on a new line for Martin.
+- Added a "comment" field to help "socializing" the process ;-)
+
+Version 0.3 11/11/30
+====================
+- Added a new table for requests pending (human validation before insertion).
+- Changed mail format from HTML to TXT (Martin asked).
+
+Version 0.2 11/11/28
+====================
+- Demo DB working great.
+- Some more functions to ease the code maintenance.
+- Format the objects number (eg 1 122 606 instead of 1122606).
+- Update on the directory name (scenemodels).
+- Format the object lat, long, alt, offset, heading (eg lat = 48.0000000 instead of 48).
+- First steps on the validation process.
+
+Version 0.1 11/11/20
+====================
+- Page submission/index.php generated.
+- Jon Stockill header added.
+- PHP functions : return the name of an object given an id, number of objects in db, db availability, stg heading to true heading conversion.
+- Page submission/share/index.php generated, with Ajax for the Model Name (thanks Julien NGUYEN).
+- Scenery objects count.
+- Captcha to avoid spamming.
+- Form verification (Javacript+PHP).
+- If offset is not set, nothing is inserted into the database.
+- Wraps the email sent to the managersr to 77 characters maximum per line, but takes into account the
+  URL (if URL's HTML is split, it doesn't work anymore).
+- Contextual help (<a href> + cursor on item).
+- Anti-XSS + SQLi functions.
+- SQL is generated only if there is no false.
+- IP is resolved - takes some time when submitting.
+- Automatic HTML mail sent to DB maintainers (information of submission).
+- Wrap emails to 77 chars per line only (except URL iot not cut them).
+- For the "ob_text", mirroring "mo_name" from the corresponding model.
+- No imperative relation between "mo_shared" and "ob_group", thus, in case of doubt, simply set "ob_group" to the integer "1".
+- Inserted a "back" link to the submission page.
+- Check the availability of the DB before all.

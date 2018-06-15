@@ -1,0 +1,228 @@
+#!/usr/bin/python
+#getobjects: webservice to get scene models within a bounding box
+#
+#Written by Torsten Dreyer, started January 2016
+#Copyright 2016 Torsten Dreyer
+#
+#Thanks to Martin Spott for preparing the ground of Scenemodels
+#Without him, all this would not be possible.
+#
+#This file is part of FlightGear.
+#
+#FlightGear is free software: you can redistribute it and/or modify
+#it under the terms of the GNU General Public License as published by
+#the Free Software Foundation, either version 2 of the License, or
+#(at your option) any later version.
+#
+#FlightGear is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+#
+#You should have received a copy of the GNU General Public License
+#along with FlightGear.  If not, see <http://www.gnu.org/licenses/>.
+
+import cgi, sys
+import psycopg2, psycopg2.extras
+import re, json, os
+import urllib2
+
+#import cgitb
+#cgitb.enable()
+
+pghost = "localhost"
+pgport = 5432
+pgdatabase = "scenemodels"
+pguser = "webuser"
+db_params = {"host":pghost, "port":pgport, "database":pgdatabase, "user":pguser}
+db_conn = psycopg2.connect(**db_params)
+db_cursor = db_conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+clientId = '46348800113-at29k30f53kuk6ed5nisbkrl9g4utpbm.apps.googleusercontent.com'
+
+################ GET FIX(es) ###################################
+def getfix():
+  arguments = cgi.FieldStorage()
+  fix = arguments['fix'].value
+  if not re.match("^[A-Za-z0-9]*$", fix ):
+      return ''
+
+  sql = "select fx_name, ST_AsGeoJSON(wkb_geometry) as pos from fgs_fixes where fx_name=UPPER(%s);"
+  db_cursor.execute( sql, (fix,) )
+
+  reply = { 'type': 'FeatureCollection', 'features': [] }
+  db_result = db_cursor.fetchall()
+  for row in db_result:
+      feature = {
+        'id': str(row['fx_name']),
+        'geometry': json.loads(row['pos']),
+        'properties': {
+          'type': 'FIX',
+          'id': str(row['fx_name']) 
+        }
+      }
+      reply['features'].append(feature);
+
+  return reply
+
+################# Get Waypoints ##################################
+def getwaypoints(pr_id):
+  reply = []
+
+  sql = "select wp_id, wp_name, wp_type, ST_X(wkb_geometry) as lng, ST_Y(wkb_geometry) as lat from fgs_waypoints \
+         where wp_prid = %s;"
+  db_cursor.execute( sql, (pr_id,) )
+  for row in db_cursor.fetchall():
+    reply.append({
+      'id': row['wp_id'],
+      'name': row['wp_name'],
+      'type': row['wp_type'],
+      'lat': row['lat'],
+      'lng': row['lng'],
+    })
+
+  return reply 
+
+################# Get Airport ##################################
+def getairport():
+  arguments = cgi.FieldStorage()
+  if 'icao' not in arguments:
+      return {}
+
+  icao = arguments['icao'].value
+  if not re.match("^[A-Za-z0-9]*$", icao ):
+      return {}
+
+  sql = "select ST_AsGeoJSON(wkb_geometry) as rwy from apt_runway where icao=UPPER(%s);"
+  db_cursor.execute( sql, (icao,) )
+
+  runwaysGeometry = { 'type': 'GeometryCollection', 'geometries': [] }
+  reply = { 'runwaysGeometry': runwaysGeometry, 'procedures': [] }
+
+  db_result = db_cursor.fetchall()
+  for row in db_result:
+      runwaysGeometry['geometries'].append(json.loads(str(row['rwy'])));
+
+  sql = "SELECT pr_id, pr_runways, pr_name, pr_type \
+           FROM fgs_procedures \
+           WHERE pr_airport = UPPER(%s);"
+
+  db_cursor.execute( sql, (icao,) )
+
+  db_result = db_cursor.fetchall()
+  for row in db_result:
+      procedure  = {
+                    'id': row['pr_id'],
+                    'runways': row['pr_runways'],
+                    'name': row['pr_name'],
+                    'type': row['pr_type'],
+                    'waypoints': getwaypoints( row['pr_id'] )
+                   }
+      reply['procedures'].append(procedure)
+
+  return reply
+
+
+################ Insert new procedure ##############################
+def newProcedure( props ):
+  sql = "INSERT INTO fgs_procedures (pr_id,pr_airport,pr_name,pr_type,pr_runways) \
+           VALUES (DEFAULT,UPPER(%s),%s,%s,%s);"
+  data = (
+   props['icao'],
+   props['name'],
+   props['type'],
+   props['runways'],)
+
+  try:
+    db_cursor.execute( sql, data )
+    db_conn.commit()
+    return { 'status': 'ok' }
+  except:
+    return { 'status': 'failure' }
+
+
+################ Insert new waypoint ##############################
+def newWaypoint( props ):
+  sql = "INSERT INTO fgs_waypoints (wp_id,wp_prid,wp_name,wp_type,wkb_geometry) \
+           VALUES (DEFAULT,%s,%s,%s,(ST_PointFromText('POINT(%s %s)',4326) ));"
+  data = (
+   props['procedure'],
+   props['name'],
+   props['type'],
+   props['lng'],
+   props['lat'],)
+
+  db_cursor.execute( sql, data )
+  db_conn.commit()
+  return { 'status': 'ok' }
+
+################ Update waypoint ##############################
+def updateWaypoint( props ):
+  sql = "UPDATE fgs_waypoints set wp_name = %s, ,wp_type = %s, \
+                wkb_geometry = (ST_PointFromText('POINT(%s %s)',4326) ) \
+                where wp_id = %s;"
+  data = (
+   props['name'],
+   props['type'],
+   props['lng'],
+   props['lat'],
+   props['id'],)
+
+#  db_cursor.execute( sql, data )
+#  db_conn.commit()
+  return { 'status': 'ok' }
+
+################ Handle GET Request ##############################
+def handleGet():
+  arguments = cgi.FieldStorage()
+  if 'icao' in arguments:
+      return getairport()
+
+  if 'fix' in arguments:
+      return getfix()
+
+  return {}
+
+################ Handle POST Request ##############################
+def handlePost():
+  request = json.load(sys.stdin);
+
+  id_token = request['id_token'];
+  if 0 == id_token:
+    return { 'status': 'not authorized' }
+    
+  auth = json.loads( urllib2.urlopen("https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=" + str(id_token)).read() )
+  if auth['aud'] != clientId:
+    return { 'status': 'unknown client-id' }
+
+  if request['command'] == 'newProcedure':
+    return newProcedure( request );
+
+  if request['command'] == 'newWaypoint':
+    return newWaypoint( request );
+
+  if request['command'] == 'updateWaypoint':
+    return updateWaypoint( request );
+
+  return { 'status': '?' }
+
+print "Content-Type: application/json"
+# disable CORS for now
+#print "Access-Control-Allow-Origin: *"
+#print "Access-Control-Allow-Methods: OPTIONS, GET, POST"
+#print "Access-Control-Allow-Headers: Origin, Accept, Content-Type, X-Requested-With, X-CSRF-Token"
+
+print
+#, separators=(',',':'))
+if os.environ['REQUEST_METHOD'] == 'GET':
+  print json.dumps(handleGet())
+
+elif os.environ['REQUEST_METHOD'] == 'POST':
+  print json.dumps(handlePost())
+
+elif os.environ['REQUEST_METHOD'] == 'OPTIONS':
+  pass
+
+# silently ignore other methods
+else:
+  pass

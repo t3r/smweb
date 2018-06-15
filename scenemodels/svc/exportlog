@@ -1,0 +1,23 @@
+#!/bin/bash
+cat << EOF
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FlightGear Scenery Database Export Log</title>
+</head>
+<body>
+  <h1>FlightGear Scenery Database Export Log</h1>
+  <pre>
+EOF
+
+stat -c "%y" /home/terrascenery/export.log
+
+cat /home/terrascenery/export.log
+
+cat << EOF
+  </pre>
+</body>
+</html>
+EOF

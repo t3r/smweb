@@ -1,0 +1,366 @@
+DIV.titleback {
+    background: rgb(94, 126, 167);
+    height: 110px;
+    overflow: hidden;
+}
+
+BODY {
+    background: #e0e0e0;
+    color: #000000;
+    font-size: 0.9em;
+    font-family: Verdana, Arial, Helvetica, Lucida, Sans-Serif;
+}
+
+#content {
+    background: #e9e9e9;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:30px;
+    border:1px solid #999;
+    text-align: left;
+    max-width:1000px;
+    word-wrap: break-word;
+    box-shadow : 0 0 0.5em 0 grey;
+}
+
+#content2 {
+    margin:20px;
+}
+
+H1 {
+    text-align: center;
+}
+
+A {
+    color: #008800;
+    text-decoration: none;
+}
+
+A:hover {
+    color: #880000;
+    text-decoration: underline;
+}
+
+IMG {
+    border: 0;
+}
+
+UL.detail {
+    list-style-type: square;
+    font-size: 0.9em;
+    font-style: italic;
+    color: #444444;
+}
+
+UL.table {
+    list-style-type: none;
+}
+
+UL.table LI {
+    margin-bottom: 7px;
+}
+
+
+.paragraph_bloc {
+    background: #e0ffe0;
+    margin-bottom: 20px;
+    border:1px solid #999;
+}
+
+.header {
+    background: #e0e0ff;
+    padding: 1px;
+    padding: 0 20px 0 20px;
+    border-bottom:1px solid #999;
+}
+
+.newsnormal {
+    float: left;
+    margin-left: 10px;
+}
+
+.newsauthor {
+    font-weight: bold;
+    float: left;
+    margin-left: 10px;
+}
+
+.newsdate {
+    font-style: italic;
+    font-weight: bold;
+    float: left;
+    margin-left: 10px;
+}
+
+HR {
+    width: 70%;
+    color: #bbb;
+}
+
+.clear {
+    clear: both;
+}
+
+
+.paragraph_bloc .body {
+    padding: 0 20px 0 20px;
+}
+
+.paragraph_bloc H2 {
+    background: #e0e0ff;
+    margin-top: 0;
+    text-align: center;
+    border-bottom:1px solid #999;
+}
+
+.paragraph_bloc H3 {
+    margin-top: 30px;
+}
+
+.paragraph_bloc H4 {
+    font-size: 1.0em;
+    text-decoration:underline;
+}
+
+.center {
+    text-align: center;
+}
+
+.ok {
+    color: #00C800;
+}
+
+.warning {
+    color: #C80000;
+}
+
+.sign {
+    white-space: nowrap;
+}
+
+.conclusion {
+    font-style:italic;
+}
+
+TD {
+    border:1px solid #999;
+    vertical-align: middle;
+}
+
+TD.submit {
+    text-align: left;
+    padding-top:10px;
+}
+
+TD.submit * {
+    margin-left:auto;
+    margin-right:auto;
+}
+
+TH {
+    color: #0000ff;
+    background: #e0e0ff;
+    font-weight: bold;
+    text-align: center;
+    border:1px solid #999;
+}
+
+TR {
+    background: #e0ffe0;
+    padding: 1px;
+}
+
+TR.bottom {
+    background: #e0e0ff;
+    padding: 1px;
+    border:1px solid #999;
+}
+
+TR.plain {
+    background: #f0f0f0;
+    padding: 1px;
+}
+
+
+TABLE {
+    background: #e0e0ff;
+    padding: 1px;
+    width:100%;
+    border:1px solid #999;
+    border-collapse:collapse;
+}
+
+
+TABLE.index {
+    background: #e0e0ff;
+    padding: 1px;
+    width: 160px;
+    border-collapse: collapse;
+    float: left;
+}
+
+TABLE.main {
+    background: #f0f0f0;
+    padding: 1px;
+}
+
+TABLE.plain {
+    background: #f0f0f0;
+    padding: 1px;
+}
+
+TABLE.float {
+    float:left;
+    margin-left:10px;
+    width:48%;
+}
+
+TABLE.left {
+    float:left;
+    width:49%;
+}
+
+TABLE.right {
+    float:right;
+    width:49%;
+}
+
+FORM {
+    margin-top: 30px;
+}
+
+input[readonly="readonly"]
+{
+    background-color:#dddddd;
+    color:#555555;
+}
+
+.aptname {
+    font-size: 8px;
+}
+
+.alname {
+    font-size: 8px;
+}
+
+
+#csstopmenu, #csstopmenu ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+#csstopmenu li{
+    float: left;
+    position: relative;
+}
+
+#csstopmenu a{
+    text-decoration: none;
+}
+
+.mainitems{
+    /*border: 1px solid black;*/
+    border-left-width: 0;
+    background-color: #e0e0ff;
+}
+
+.headerlinks a{
+    margin: auto 8px;
+    font-weight: bold;
+    color: #008800;
+}
+
+.submenus{
+    display: none;
+    width: 22em;
+    position: absolute;
+    top: 1.2em;
+    left: 0;
+    background-color: #e0e0ff;
+    border: 1px solid rgb(153, 153, 153);
+    border-top: 0;
+    z-index: 99;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2); -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2); -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.submenus li{
+    width: 100%;
+}
+
+.submenus li a{
+    display: block;
+    width: 100%;
+    text-indent: 3px;
+}
+
+html>body .submenus li a{ /* non IE browsers */
+    width: auto;
+}
+
+.submenus li a:hover{
+    background-color: #c0c0df;
+    color: #880000;
+}
+
+.submenus li.separator {
+    background-color: #A5A5A5;
+    height: 1px;
+    margin: 9px 0;
+    overflow: hidden;
+}
+
+#csstopmenu li>ul {/* non IE browsers */
+    top: auto;
+    left: auto;
+}
+
+#csstopmenu li:hover ul, li.over ul {
+    display: block;
+}
+
+html>body #clearmenu { /* non IE browsers */
+    height: 3px;
+}
+
+img.icon {
+    width: 16px;
+}
+
+
+tr.object:nth-child(even) {background-color: rgb(244, 255, 244);}
+tr.object:nth-child(odd) {background: #FFF}
+
+tr.object td{
+    border: 0;
+    border-bottom: 1px solid #999;
+}
+
+/* jQuery tabs styling */
+
+.ui-widget {
+    font-size: 1em !important;
+}
+.ui-widget-content {
+    border: none !important;
+}
+.ui-widget-header {
+    background: none !important;
+    border: none !important;
+}
+.ui-tabs, .ui-tabs-panel {
+    background: none !important;
+    padding: 0 !important;
+}
+.ui-tabs-nav {
+    margin-bottom: -30px !important;
+    padding: 0 !important;
+}
+.ui-state-active a, .ui-tabs-panel {
+    background-color: rgb(224, 255, 224) !important;
+}
+
+.statscounter {
+  font-weight: bold;
+  font-size: 110%;
+}

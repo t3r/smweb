@@ -1,0 +1,34 @@
+Shared objects
+==============
+Features updates (by priority):
+-------------------------------
+- Forbit the editing of objects tagged as coming from "OSM" and ask the user to update the OSM data itself.
+- Make public the AIS PDF to scenemodels export scripts (in Jon's home directory)
+- Ask the submitter to send his name in the forms (Would mandatory mail be sufficient?).
+- Add pitch/roll so they can be, for instance, mass imported [can be added now, but they are not taken into account].
+- Add a possibility to switch from STG heading to true and inversely.
+
+Static objects
+==============
+After production:
+=================
+- The dos2unix has to be done before reading the files to check for input. This will avoid Windows CRLFs to make the cheking mishappen.
+- Feature: give the user a simple registration via the forms so he can be added to the authors table on a easy manner. However, this will need someone to validate this to avoid spammers.
+- Have a massive model import tool (ot-666, omega asking for it).
+- Enable shared textures possibility.
+
+Overall work:
+=============
+- Logging options
+- Position with a preceeding 0 are sometimes causing troubles. Should be accepted and squashed.
+- Add a tcp/or so socket link between FG core and this script to import data directly into the DB!
+  => Using HTTP API we could think of an export between ufo and fgs_objects scripts and between Blender and fgs_models scripts.
+  => cf for instance the shapefiles download on the mapserver.
+- Add a field in the model form where submitters can enter the generic models which get replaced.
+- Let the maintainer the possibility to update fields in the submission checking form.
+- Give the possibility to add .xml files for instance without a position/ac3d file. For instance a new strobe light, which is then referenced in the xml file of a 3D model.
+- Improve statistics performance. Maybe create the stats only once a day and store them in some file, so we don't need to re-do all the math every time stats.php is loaded?
+
+Terragear
+=========
+- Create a webtool "a la Terragear GUI" to generate scenery based on user inputs.

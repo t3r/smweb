@@ -1,0 +1,24 @@
+<div title="Waypoint Properties">
+  <label>Name
+    <input type="text" class="text ui-widget-content ui-corner-all" data-bind="value: name">
+  </label>
+  <label>Type
+    <select class="make-selectmenu" data-bind="value: type">
+      <option value="Normal">Normal</option>
+      <option value="Runway">Runway</option>
+      <option value="Hold">Hold</option>
+      <option value="Vectors">Vectors</option>
+      <option value="Intc">Intc</option>
+      <option value="VorRadialIntc">VorRadialIntc</option>
+      <option value="DmeIntc">DmeIntc</option>
+      <option value="ConstHdgToAlt">ConstHdgToAlt</option>
+      <option value="PBD">PBD</option>
+    </select>
+  </label>
+  <fieldset>
+    <legend>Position</legend>
+    <input type="text" class="text ui-widget-content ui-corner-all" data-bind="value: latitude">
+    <input type="text" class="text ui-widget-content ui-corner-all" data-bind="value: longitude">
+  </fieldset>
+ <!--div data-bind="text: ko.toJSON($data)"></div-->
+</div>

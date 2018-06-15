@@ -1,0 +1,38 @@
+2011, November 16th
+
+Just a small word on the project.
+=================================
+Martin Spott posted a few months ago on the devel list a request for help (RFH ;-) to ease his task
+with static model verification and insertion into our PostGIS DB. The goal is to automate, enhance
+and accelerate the process.
+
+Oliver (me) proposed his help and started to work first on the shared models. The experience gained
+on this task should ease the following work on the 3D models import automation.
+
+A "TODO" list has also been issued (TOBEDONE) which lists the tasks yet to be achieved in this
+process.
+
+Everyone with PHP - Ajax knowledge would be great - is welcome to help ;-)
+
+License
+=======
+See LICENCE file.
+
+How does it work ?
+==================
+Code:
+-----
+I tried to make the code as commented as possible. The code is not perfect, I'm not a PHP/PG expert,
+but I tried to do my best I swear!
+
+Directories:
+------------
+=> "ajax" => Containing all the work relative to Ajax (XML/PHP+JS).
+=> "captcha" => Relative to Google's Recaptcha.
+=> "inc" => Relative to the librairies used in this process (to make things easy, clean and "short").
+=> "object" => Contains all the files (2) relative to the object position insertions.
+=> "model" => The same, but for models.
+
+Files
+-----
+Well, have a look at the file, I guess they are commented and easy enough to read. Else, let me know.

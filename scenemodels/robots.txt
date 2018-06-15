@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /submission/
+Disallow: /tmp/
+Disallow: /terrascenery/
+Disallow: /jenkins/
+Disallow: /svc/
+Disallow: /update/
+Disallow: /app.php

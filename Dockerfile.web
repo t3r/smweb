@@ -1,0 +1,5 @@
+FROM nginx:latest 
+ 
+COPY ./scenemodels /scenemodels
+RUN chown -R www-data.www-data /scenemodels
+COPY ./default.conf /etc/nginx/conf.d/

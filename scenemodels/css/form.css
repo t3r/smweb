@@ -1,0 +1,37 @@
+.loadingScreenWindow .ui-dialog-titlebar-close {
+  display: none;
+}
+
+.loadingScreenWindow .ui-dialog-title {
+    color: #1c94c4;
+}
+
+/* Tooltips */
+
+label {
+    border-bottom: 1px dotted #000000;
+    cursor: help;
+    position: relative;
+    color: #008800;
+    text-decoration: none;
+}
+label em {
+    border-bottom: none;
+    color: #ff0000;
+}
+
+label span {
+    margin-left: -999em;
+    position: absolute;
+    padding: 0.8em 1em;
+    background: #FFFFAA; 
+    border: 1px solid #FFAD33;
+}
+label:hover span {
+    border-radius: 5px 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; 
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1); -webkit-box-shadow: 5px 5px rgba(0, 0, 0, 0.1); -moz-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+    font-family: Calibri, Tahoma, Geneva, sans-serif;
+    position: absolute; left: 1em; top: 2em; z-index: 99;
+    margin-left: 0; width: 250px;
+    color: black;
+}
