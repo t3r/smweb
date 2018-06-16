@@ -30,4 +30,7 @@
 
         <?php require 'menu.php';?>
         
+        <div style="width: 100%;background:red;color:white">
+          <h1>TEMPORARY SITE - DO NOT USE</h1>
+        </div>
         <div id="content2">
