@@ -9,7 +9,7 @@ require '../view/header.php';
 <h1>FlightGear scenery objects and models submission</h1>
 
 <p>
-    Please read <a href="//<?php echo $_SERVER['SERVER_NAME'];?>/contribute.php">this page</a> in order to understand what items those forms are looking for. All submissions are being followed and logged, so <b>DO NOT TAKE THIS</b> as a sandbox.
+    Please read <a href="//scenery.flightgear.org/contribute.php">this page</a> in order to understand what items those forms are looking for. All submissions are being followed and logged, so <b>DO NOT TAKE THIS</b> as a sandbox.
 </p>
 
 <table>

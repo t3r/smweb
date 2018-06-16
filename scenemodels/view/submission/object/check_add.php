@@ -52,8 +52,8 @@ if (isset($updatedReq)) {
     echo "<br />Your object request has been successfully queued into the FG scenery database update requests!<br />";
     echo "Unless it's rejected, it should appear in Terrasync within a few days.<br />";
     echo "The FG community would like to thank you for your contribution!<br />";
-    echo "Want to submit another object? <a href=\"http://".$_SERVER['SERVER_NAME']."/app.php?c=AddObjects&amp;a=form\">Click here to go back to the submission page.</a><br />";
-    echo "Please remember to use the <a href=\"http://".$_SERVER['SERVER_NAME']."/app.php?c=AddObjects&amp;a=massiveform\">massive insertion script</a> should you have many objects to add.";
+    echo "Want to submit another object? <a href=\"/app.php?c=AddObjects&amp;a=form\">Click here to go back to the submission page.</a><br />";
+    echo "Please remember to use the <a href=\"/app.php?c=AddObjects&amp;a=massiveform\">massive insertion script</a> should you have many objects to add.";
 }
 
 require 'view/footer.php';

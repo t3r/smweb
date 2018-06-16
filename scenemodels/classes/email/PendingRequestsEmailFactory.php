@@ -39,27 +39,27 @@ class PendingRequestsEmailFactory extends EmailContentFactory {
             switch (get_class($request)) {
             case "model\RequestObjectUpdate":
                 $pendingRequests .= "This is an object update request!\n";
-                $pendingRequests .= "http://".$_SERVER['SERVER_NAME']."/app.php?c=ObjectValidator&a=viewRequest&sig=".$sig."\n";
+                $pendingRequests .= "https://scenery.flightgear.org/app.php?c=ObjectValidator&a=viewRequest&sig=".$sig."\n";
                 break;
 
             case "model\RequestObjectDelete":
                 $pendingRequests .= "This is an object deletion request!\n";
-                $pendingRequests .= "http://".$_SERVER['SERVER_NAME']."/app.php?c=ObjectValidator&a=viewRequest&sig=".$sig."\n";
+                $pendingRequests .= "https://scenery.flightgear.org/app.php?c=ObjectValidator&a=viewRequest&sig=".$sig."\n";
                 break;
 
             case "model\RequestMassiveObjectsAdd":
                 $pendingRequests .= "This is an object(s) addition request!\n";
-                $pendingRequests .= "http://".$_SERVER['SERVER_NAME']."/app.php?c=AddObjectsValidator&a=viewRequest&sig=".$sig."\n";
+                $pendingRequests .= "https://scenery.flightgear.org/app.php?c=AddObjectsValidator&a=viewRequest&sig=".$sig."\n";
                 break;
 
             case "model\RequestModelAdd":
                 $pendingRequests .= "This is a 3D model addition request!\n";
-                $pendingRequests .= "http://".$_SERVER['SERVER_NAME']."/app.php?c=AddModelValidator&a=viewRequest&sig=".$sig."\n";
+                $pendingRequests .= "https://scenery.flightgear.org/app.php?c=AddModelValidator&a=viewRequest&sig=".$sig."\n";
                 break;
 
             case "model\RequestModelUpdate":
                 $pendingRequests .= "This is a 3D model update request!\n";
-                $pendingRequests .= "http://".$_SERVER['SERVER_NAME']."/app.php?c=UpdateModelValidator&a=viewRequest&sig=".$sig."\n";
+                $pendingRequests .= "https://scenery.flightgear.org/app.php?c=UpdateModelValidator&a=viewRequest&sig=".$sig."\n";
                 break;
             }
         }
@@ -67,7 +67,7 @@ class PendingRequestsEmailFactory extends EmailContentFactory {
         $invalidReqText = "";
         foreach ($invalidRequests as $invalidReq) {
             $invalidReqText .= "Request #".$invalidReq->getId()." is invalid! ".$invalidReq->getComment()."\n";
-            $invalidReqText .= "To delete it, click: http://".$_SERVER['SERVER_NAME']."/app.php?c=GenericValidator&a=rejectRequest&sig=".$invalidReq->getSig()."\r\n\r\n";
+            $invalidReqText .= "To delete it, click: https://scenery.flightgear.org/app.php?c=GenericValidator&a=rejectRequest&sig=".$invalidReq->getSig()."\r\n\r\n";
         }
         
         $message = "We would like to give you an overview of the remaining pending requests.\r\n\r\n" .

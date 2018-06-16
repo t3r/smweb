@@ -50,6 +50,7 @@ class EmailContent {
         if ($backend) {
             // Setting maintainers (will have to be moved somewhere on sphere)
 //            include "/srv/sceneryweb/maintainers";
+/*
             if( $to !== '' ) {
                 // sourceforge mailing-list does not like to be in Bcc
                 $maintainers = "Cc: FlightGear Scenemodels Review <flightgear-scenemodels-review@lists.sourceforge.net>" ."\r\n";
@@ -57,9 +58,11 @@ class EmailContent {
             } else {
                 $to = "FlightGear Scenemodels Review <flightgear-scenemodels-review@lists.sourceforge.net>" ."\r\n";
             }
+*/
+$to = "Torsten Dreyer <torsten@flightgear.org>";
         }
         $headers .= "X-Mailer: PHP-" . phpversion() . "\r\n";
 //error_log($this->message);
-        mail($to, $this->subject, $this->message, $headers);
+        mail($to, $this->subject, $this->message, $headers, getenv("MAILARGS"));
     }
 }

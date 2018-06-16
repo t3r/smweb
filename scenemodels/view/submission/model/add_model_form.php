@@ -114,10 +114,10 @@ $(function() {
 
 <p>
     This form goal is to ease the submission of static and shared 3D models into the FlightGear scenery database.
-    There are currently <?php echo number_format($nbModels, '0', '', ' '); ?> unique models in <a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/app.php?c=Models&amp;a=browseRecent">our database</a>. Help us to make it more!
+    There are currently <?php echo number_format($nbModels, '0', '', ' '); ?> unique models in <a href="/app.php?c=Models&amp;a=browseRecent">our database</a>. Help us to make it more!
 </p>
 <p>
-    Hover your mouse over the various field titles (left column) to view some information about what to do with that particular field. Please read <a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/contribute.php">this page</a> for a better understanding of the various requirements.
+    Hover your mouse over the various field titles (left column) to view some information about what to do with that particular field. Please read <a href="/contribute.php">this page</a> for a better understanding of the various requirements.
 </p>
 
 <div id="tabs">

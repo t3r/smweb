@@ -85,7 +85,7 @@ case "model\RequestObjectDelete":
          "<td>".$objDelPos->getGroundElevation()."</td>" .
          "<td>".$objDelPos->getElevationOffset()."</td>" .
          "<td>".$objDelPos->getOrientation()."</td>" .
-         "<td><a href=\"http://".$_SERVER['SERVER_NAME']."/app.php?c=Models&amp;a=view&amp;id=".$modelMD->getId()."\">".htmlspecialchars($modelMD->getName())."</a></td>" .
+         "<td><a href=\"/app.php?c=Models&amp;a=view&amp;id=".$modelMD->getId()."\">".htmlspecialchars($modelMD->getName())."</a></td>" .
          "<td><a href=\"/map/?lon=".$objDelPos->getLongitude()."&amp;lat=".$objDelPos->getLatitude()."&amp;z=14\">Map</a></td>" .
          "</tr>";
     break;

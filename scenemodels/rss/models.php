@@ -10,7 +10,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 <rss version="2.0">
   <channel>
     <title>FGFSDB Model Updates</title>
-    <link>https://<?php echo $_SERVER['SERVER_NAME'];?>/app.php?c=Models&amp;a=browseRecent</link>
+    <link>https://scenery.flightgear.org/app.php?c=Models&amp;a=browseRecent</link>
     <language>en-GB</language>
     <copyright>Jon Stockill 2006-2008.</copyright>
     <description>
@@ -25,7 +25,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
     ?>
     <item>
       <link>
-          https://<?php echo $_SERVER['SERVER_NAME'];?>/app.php?c=Models&amp;a=view&amp;id=<?php echo $modelMetadata->getId();?>
+          https://scenery.flightgear.org/app.php?c=Models&amp;a=view&amp;id=<?php echo $modelMetadata->getId();?>
       </link>
       <title><![CDATA[<?php echo $modelMetadata->getName()?> ]]></title> 
       <description>

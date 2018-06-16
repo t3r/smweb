@@ -57,7 +57,7 @@ $(function() {
 
 <p>
     This form's goal is to ease the submission of objects into the FlightGear Scenery database. There are currently <?php echo number_format($nbObjects, '0', '', ' ');?> objects in the database. Help us to make it more!<br/>
-    Please read <a href="https://<?php echo $_SERVER['SERVER_NAME'];?>/contribute.php">this page</a> in order to understand what recommendations this script is looking for.<br />
+    Please read <a href="/contribute.php">this page</a> in order to understand what recommendations this script is looking for.<br />
     If you need some more help, just place your mouse over the left column (eg "Elevation Offset").
 </p>
 <p>

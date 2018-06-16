@@ -33,7 +33,7 @@ class EmailContentFactory {
                    "Sincerely,\r\n\r\n" .
                    "FlightGear Scenery Team\r\n\r\n" .
                    "-----------------\r\n" .
-                   "This process has gone through antispam measures. However, if this email is not sollicited, please excuse us and report at http://www.flightgear.org/forums/viewtopic.php?f=5&t=14671";
+                   "This process has gone through antispam measures. However, if this email is not sollicited, please excuse us and report at https://www.flightgear.org/forums/viewtopic.php?f=5&t=14671";
         
         return wordwrap($message, 70, "\r\n");
     }
@@ -63,7 +63,7 @@ class EmailContentFactory {
         $message .= "issued an object(s) import request (#".$request->getId().").\r\n\r\n" .
                     "Comment by user: ".strip_tags($request->getComment())."\r\n\r\n" .
                     "Now please click the following link to check and confirm ".
-                    "or reject the submission: http://".$_SERVER['SERVER_NAME']."/app.php?c=AddObjectsValidator&a=viewRequest&sig=". $request->getSig() ."\r\n\r\n";
+                    "or reject the submission: https://scenery.flightgear.org/app.php?c=AddObjectsValidator&a=viewRequest&sig=". $request->getSig() ."\r\n\r\n";
 
         return new \email\EmailContent($subject, static::format($message));
     }
@@ -97,7 +97,7 @@ class EmailContentFactory {
         if (!empty($comment)) {
             $message .= "The screener left a comment for you: '" . $comment . "'\r\n\r\n";
         }
-        $message .= "You can check the model at http://".$_SERVER['SERVER_NAME']."/app.php?c=Models&a=view&id=".$modelMD->getId()."\r\n\r\n" .
+        $message .= "You can check the model at https://scenery.flightgear.org/app.php?c=Models&a=view&id=".$modelMD->getId()."\r\n\r\n" .
                 "Thanks for your help in making FlightGear better!\r\n\r\n";
 
         return new \email\EmailContent($subject, static::format($message));
@@ -114,14 +114,14 @@ class EmailContentFactory {
             $message .= "and with email address ".$safeContrEmail." ";
         }
         $message .= "issued the following request:\r\n\r\n" .
-                    "Family:           ". $newModelMD->getModelsGroup()->getName() . "\r\n[ http://".$_SERVER['SERVER_NAME']."/app.php?c=Models&a=browse&shared=".$newModelMD->getModelsGroup()->getId()." ]\r\n" .
+                    "Family:           ". $newModelMD->getModelsGroup()->getName() . "\r\n[ https://scenery.flightgear.org/app.php?c=Models&a=browse&shared=".$newModelMD->getModelsGroup()->getId()." ]\r\n" .
                     "Path:             ". $newModelMD->getFilename() . "\r\n" .
                     "Author:           ". $newModelMD->getAuthor()->getName() ."\r\n" .
                     "Contributor email ". $safeContrEmail ."\r\n" .
                     "Model name:       ". $newModelMD->getName() ."\r\n" .
                     "Description:      ". strip_tags($newModelMD->getDescription()) ."\r\n" .
                     "Comment by user:  ". strip_tags($request->getComment()) . "\r\n\r\n" .
-                    "Now please click the following link to view and confirm/reject the submission: " . "http://".$_SERVER['SERVER_NAME']."/app.php?c=UpdateModelValidator&a=viewRequest&sig=". $request->getSig() ."\r\n\r\n";
+                    "Now please click the following link to view and confirm/reject the submission: " . "https://scenery.flightgear.org/app.php?c=UpdateModelValidator&a=viewRequest&sig=". $request->getSig() ."\r\n\r\n";
 
         return new \email\EmailContent($subject, static::format($message));
     }
@@ -145,7 +145,7 @@ class EmailContentFactory {
         $subject = "3D model update request";
         $message = "On ".$dtg." UTC, someone from the IP address ".$ipaddr." (".$host."), which is thought to be you, issued a 3D model update request (#".$request->getId().").\r\n\r\n" .
                    "We would like to let you know that this request has been sent for validation. Allow up to a few days for your request to be processed.\r\n\r\n" .
-                   "Family:           ". $newModelMD->getModelsGroup()->getName() . "\r\n" . "[ http://".$_SERVER['SERVER_NAME']."/app.php?c=Models&a=browse&shared=".$newModelMD->getModelsGroup()->getId()." ]\r\n" .
+                   "Family:           ". $newModelMD->getModelsGroup()->getName() . "\r\n" . "[ https://scenery.flightgear.org/app.php?c=Models&a=browse&shared=".$newModelMD->getModelsGroup()->getId()." ]\r\n" .
                    "Path:             ". $newModelMD->getFilename() . "\r\n" .
                    "Author:           ". $newModelMD->getAuthor()->getName() ."\r\n" .
                    "Contributor email ". $request->getContributorEmail() ."\r\n" .
@@ -161,7 +161,7 @@ class EmailContentFactory {
         $subject = "3D model update request";
         $message = "On ".$dtg." UTC, someone from the IP address ".$ipaddr." (".$host."), issued a 3D model update request for your model (#".$request->getId(). ").\r\n\r\n" .
                    "We would like to let you know that this request has been sent for validation.\r\n\r\n" .
-                   "Family:           ". $newModelMD->getModelsGroup()->getName() . "\r\n" . "[ http://".$_SERVER['SERVER_NAME']."/app.php?c=Models&a=browse&shared=".$newModelMD->getModelsGroup()->getId()." ]\r\n" .
+                   "Family:           ". $newModelMD->getModelsGroup()->getName() . "\r\n" . "[ https://scenery.flightgear.org/app.php?c=Models&a=browse&shared=".$newModelMD->getModelsGroup()->getId()." ]\r\n" .
                    "Path:             ". $newModelMD->getFilename() . "\r\n" .
                    "Author:           ". $newModelMD->getAuthor()->getName() ."\r\n" .
                    "Contributor email ". $request->getContributorEmail() ."\r\n" .
@@ -215,8 +215,8 @@ class EmailContentFactory {
                     "Elevation offset: " .$objectToDelPos->getElevationOffset(). "\r\n" .
                     "True orientation: " .$objectToDelPos->getOrientation(). "\r\n" .
                     "Comment:          " .strip_tags($request->getComment()) . "\r\n" .
-                    "Map:              http://".$_SERVER['SERVER_NAME']."/map/?lon=". $objectToDelPos->getLongitude() ."&lat=". $objectToDelPos->getLatitude() ."&z=14\r\n\r\n" .
-                    "Now please click the following link to view and confirm/reject the submission: http://".$_SERVER['SERVER_NAME']."/app.php?c=ObjectValidator&a=viewRequest&sig=". $request->getSig() . "\r\n\r\n";
+                    "Map:              https://scenery.flightgear.org/map/?lon=". $objectToDelPos->getLongitude() ."&lat=". $objectToDelPos->getLatitude() ."&z=14\r\n\r\n" .
+                    "Now please click the following link to view and confirm/reject the submission: https://scenery.flightgear.org/app.php?c=ObjectValidator&a=viewRequest&sig=". $request->getSig() . "\r\n\r\n";
 
         return new \email\EmailContent($subject, static::format($message));
     }
@@ -236,7 +236,7 @@ class EmailContentFactory {
                    "Elevation offset: " .$objectToDelPos->getElevationOffset(). "\r\n" .
                    "True orientation: " .$objectToDelPos->getOrientation(). "\r\n" .
                    "Comment:          " .strip_tags($request->getComment()) . "\r\n".
-                   "Map:              http://".$_SERVER['SERVER_NAME']."/map/?lon=". $objectToDelPos->getLongitude() ."&lat=". $objectToDelPos->getLatitude() ."&z=14\r\n\r\n";
+                   "Map:              https://scenery.flightgear.org/map/?lon=". $objectToDelPos->getLongitude() ."&lat=". $objectToDelPos->getLatitude() ."&z=14\r\n\r\n";
         return new \email\EmailContent($subject, static::format($message));
     }
     
@@ -256,17 +256,17 @@ class EmailContentFactory {
         $message .= "issued the following request:\r\n\r\n" .
                     "Object #:          ". $oldObject->getId()."\r\n" .
                     "Family:            ". $oldModelMD->getModelsGroup()->getName() ." => ".$newModelMD->getModelsGroup()->getName()."\r\n" .
-                    "[ http://".$_SERVER['SERVER_NAME']."/app.php?c=Models&a=browse&shared=".$newModelMD->getModelsGroup()->getId()." ]" . "\r\n" .
+                    "[ https://scenery.flightgear.org/app.php?c=Models&a=browse&shared=".$newModelMD->getModelsGroup()->getId()." ]" . "\r\n" .
                     "Model:             ". $oldModelMD->getName() ." => ".$newModelMD->getName()."\r\n" .
-                    "[ http://".$_SERVER['SERVER_NAME']."/app.php?c=Models&a=view&id=".$newModelMD->getId()." ]" . "\r\n" .
+                    "[ https://scenery.flightgear.org/app.php?c=Models&a=view&id=".$newModelMD->getId()." ]" . "\r\n" .
                     "Latitude:          ". $oldObjPos->getLatitude() . "  => ".$newObjPos->getLatitude()."\r\n" .
                     "Longitude:         ". $oldObjPos->getLongitude() . " => ".$newObjPos->getLongitude()."\r\n" .
                     "Ground elevation:  ". $oldObjPos->getGroundElevation() . " => ".$newObjPos->getGroundElevation()."\r\n" .
                     "Elevation offset:  ". $oldObjPos->getElevationOffset() . " => ".$newObjPos->getElevationOffset()."\r\n" .
                     "True orientation:  ". $oldObjPos->getOrientation() . " => ".$newObjPos->getOrientation()."\r\n" .
-                    "Map (new position): http://".$_SERVER['SERVER_NAME']."/map/?lon=". $newObjPos->getLongitude() ."&lat=". $newObjPos->getLatitude() ."&z=14" . "\r\n" .
+                    "Map (new position): https://scenery.flightgear.org/map/?lon=". $newObjPos->getLongitude() ."&lat=". $newObjPos->getLatitude() ."&z=14" . "\r\n" .
                     "Comment:           ". strip_tags($request->getComment()) ."\r\n\r\n" .
-                    "Now please click the following link to view and confirm/reject the submission: http://".$_SERVER['SERVER_NAME']."/app.php?c=ObjectValidator&a=viewRequest&sig=". $request->getSig() . "\r\n\r\n";
+                    "Now please click the following link to view and confirm/reject the submission: https://scenery.flightgear.org/app.php?c=ObjectValidator&a=viewRequest&sig=". $request->getSig() . "\r\n\r\n";
 
         return new \email\EmailContent($subject, static::format($message));
     }
@@ -282,9 +282,9 @@ class EmailContentFactory {
                    "We would like to let you know that this request was sent for validation. Allow up to a few days for your request to be processed." . "\r\n\r\n" .
                    "Object #:          ".$oldObject->getId()."\r\n" .
                    "Family:            ". $oldModelMD->getModelsGroup()->getName() ." => ".$newModelMD->getModelsGroup()->getName()."\r\n" .
-                   "[ http://".$_SERVER['SERVER_NAME']."/app.php?c=Models&a=browse&shared=".$newModelMD->getModelsGroup()->getId()." ]\r\n" .
+                   "[ https://scenery.flightgear.org/app.php?c=Models&a=browse&shared=".$newModelMD->getModelsGroup()->getId()." ]\r\n" .
                    "Model:             ". $oldModelMD->getName() ." => ".$newModelMD->getName()."\r\n" .
-                   "[ http://".$_SERVER['SERVER_NAME']."/app.php?c=Models&a=view&id=".$newModelMD->getId()." ]\r\n" .
+                   "[ https://scenery.flightgear.org/app.php?c=Models&a=view&id=".$newModelMD->getId()." ]\r\n" .
                    "Latitude:          ". $oldObjPos->getLatitude() . "  => ".$newObjPos->getLatitude()."\r\n" .
                    "Longitude:         ". $oldObjPos->getLongitude() . " => ".$newObjPos->getLongitude()."\r\n" .
                    "Ground elevation:  ". $oldObjPos->getGroundElevation() . " => will be recomputed\r\n" .
@@ -321,7 +321,7 @@ class EmailContentFactory {
                    "On ".$dtg." UTC, someone from the IP address ".$ipaddr." (".$host.") ".
                    "and with email address ".$contrEmail." ".
                    "issued the following request:" . "\r\n\r\n" .
-                   "Family:           ". $newModelMD->getModelsGroup()->getName() . "\r\n" . "[ http://".$_SERVER['SERVER_NAME']."/app.php?c=Models&a=browse&shared=".$newModelMD->getModelsGroup()->getId()." ]" . "\r\n" .
+                   "Family:           ". $newModelMD->getModelsGroup()->getName() . "\r\n" . "[ https://scenery.flightgear.org/app.php?c=Models&a=browse&shared=".$newModelMD->getModelsGroup()->getId()." ]" . "\r\n" .
                    "Path:             ". $newModelMD->getFilename() . "\r\n" .
                    "Author:           ". $newModelMD->getAuthor()->getName();
         if ($newModelMD->getAuthor()->getId() == 1) {
@@ -335,8 +335,8 @@ class EmailContentFactory {
                    "Country:          ". $newObject->getCountry()->getName() . "\r\n" .
                    "Elevation offset: ". $newObjPos->getElevationOffset() . "\r\n" .
                    "True orientation: ". $newObjPos->getOrientation() . "\r\n" .
-                   "Map:              http://".$_SERVER['SERVER_NAME']."/map/?lon=". $newObjPos->getLongitude() ."&lat=". $newObjPos->getLatitude() ."&z=14\r\n\r\n" .
-                   "Now please click the following link to view and confirm/reject the submission: " . "http://".$_SERVER['SERVER_NAME']."/app.php?c=AddModelValidator&a=viewRequest&sig=". $request->getSig() . "\r\n\r\n";
+                   "Map:              https://scenery.flightgear.org/map/?lon=". $newObjPos->getLongitude() ."&lat=". $newObjPos->getLatitude() ."&z=14\r\n\r\n" .
+                   "Now please click the following link to view and confirm/reject the submission: " . "https://scenery.flightgear.org/app.php?c=AddModelValidator&a=viewRequest&sig=". $request->getSig() . "\r\n\r\n";
 
         return new \email\EmailContent($subject, static::format($message));
     }
@@ -365,7 +365,7 @@ class EmailContentFactory {
         $message = "On ".$dtg." UTC, someone from the IP address ".$ipaddr." (".$host."), which is thought to be you, issued a 3D model import request.\r\n\r\n" .
                    "We would like to let you know that this request was sent for validation. Allow up to a few days for your request to be processed.\r\n\r\n" .
                    "For reference, the ID of this request is '".$request->getId(). "' (model and object)\r\n\r\n" .
-                   "Family:           ". $newModelMD->getModelsGroup()->getName() . "\r\n" . "[ http://".$_SERVER['SERVER_NAME']."/app.php?c=Models&a=browse&shared=".$newModelMD->getModelsGroup()->getId()." ]" . "\r\n" .
+                   "Family:           ". $newModelMD->getModelsGroup()->getName() . "\r\n" . "[ https://scenery.flightgear.org/app.php?c=Models&a=browse&shared=".$newModelMD->getModelsGroup()->getId()." ]" . "\r\n" .
                    "Path:             ". $newModelMD->getFilename() . "\r\n" .
                    "Author:           ". $newModelMD->getAuthor()->getName() ."\r\n" .
                    "Model name:       ". $newModelMD->getName() ."\r\n" .
@@ -375,7 +375,7 @@ class EmailContentFactory {
                    "Country:          ". $newObject->getCountry()->getName() . "\r\n" .
                    "Elevation offset: ". $newObjPos->getElevationOffset() . "\r\n" .
                    "True orientation: ". \ObjectUtils::headingSTG2True($newObjPos->getOrientation()) . "\r\n" .
-                   "Map:              http://".$_SERVER['SERVER_NAME']."/map/?lon=". $newObjPos->getLongitude() ."&lat=". $newObjPos->getLatitude() ."&z=14\r\n\r\n";
+                   "Map:              https://scenery.flightgear.org/map/?lon=". $newObjPos->getLongitude() ."&lat=". $newObjPos->getLatitude() ."&z=14\r\n\r\n";
 
         return new \email\EmailContent($subject, static::format($message));
     }

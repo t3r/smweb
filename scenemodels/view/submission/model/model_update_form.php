@@ -92,7 +92,7 @@ $(function() {
 </div>
 
 <p>
-    Hover your mouse over the various field titles (left column) to view some information about what to do with that particular field. Please read <a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/contribute.php">this page</a> for a better understanding of the various requirements.
+    Hover your mouse over the various field titles (left column) to view some information about what to do with that particular field. Please read <a href="/contribute.php">this page</a> for a better understanding of the various requirements.
 </p>
 
 <div id="tabs">
