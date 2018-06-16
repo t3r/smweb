@@ -27,31 +27,30 @@ RUN apk add --update \
 	&& docker-php-ext-enable event \
 	&& mv /usr/local/etc/php/conf.d/docker-php-ext-event.ini \
 		/usr/local/etc/php/conf.d/docker-php-ext-zz-event.ini \
-	&& rm /usr/local/etc/php/bogus.ini
-
-	RUN apk add --update \
+	&& rm /usr/local/etc/php/bogus.ini  \
+	\
+	&&  apk add --update \
 		libevent-dev \
-	&& docker-php-ext-install phar 
-
-	RUN apk add --update \
-		libxml2-dev
-	RUN docker-php-ext-install dom
-	RUN apk add --update \
-		libpng-dev
-	RUN docker-php-ext-install gd
-	RUN docker-php-ext-install ctype
-	RUN docker-php-ext-install xmlwriter
-#	RUN docker-php-ext-install xmlreader
-	RUN docker-php-ext-install zip
-	RUN docker-php-ext-install posix
-	RUN docker-php-ext-install json
-	RUN docker-php-ext-install fileinfo
-	RUN apk add --update \
-		libpng-dev gettext-dev curl-dev
-	RUN docker-php-ext-install gettext
-	RUN docker-php-ext-install curl
-
-	RUN apk del \
+	&& docker-php-ext-install phar \
+	\
+	&&  apk add --update \
+		libxml2-dev \
+	&&  docker-php-ext-install dom \
+	&&  apk add --update \
+		libpng-dev \
+	&&  docker-php-ext-install gd \
+	&&  docker-php-ext-install ctype \
+	&&  docker-php-ext-install xmlwriter \
+	&&  docker-php-ext-install zip \
+	&&  docker-php-ext-install posix \
+	&&  docker-php-ext-install json \
+	&&  docker-php-ext-install fileinfo \
+	&&  apk add --update \
+		libpng-dev gettext-dev curl-dev \
+	&&  docker-php-ext-install gettext \
+	&&  docker-php-ext-install curl \
+	\
+	&&  apk del \
 		autoconf \
 		bash \
 		binutils \
@@ -97,3 +96,9 @@ ENV PGDATABASE=scenemodels
 ENV PGUSER=flightgear
 ENV PGPASSWORD=secret
 
+COPY ./scenemodels /scenemodels
+RUN chown -R root.root /scenemodels
+RUN find /scenemodels -type d -not -perm 755 -exec chmod 755 {} \;
+RUN find /scenemodels -type f -not -perm 644 -exec chmod 644 {} \;
+
+VOLUME /scenemodels
