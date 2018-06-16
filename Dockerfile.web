@@ -1,5 +1,10 @@
 FROM nginx:latest 
  
+COPY ./default.conf /etc/nginx/conf.d/ 
+RUN chown root.root /etc/nginx/conf.d/default.conf && chmod 444 /etc/nginx/conf.d/default.conf
+
 COPY ./scenemodels /scenemodels
-RUN chown -R www-data.www-data /scenemodels
-COPY ./default.conf /etc/nginx/conf.d/
+RUN chown -R root.root /scenemodels
+RUN find /scenemodels -type d -not -perm 755 -exec chmod 755 {} \;
+RUN find /scenemodels -type f -not -perm 644 -exec chmod 644 {} \;
+

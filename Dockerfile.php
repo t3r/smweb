@@ -7,10 +7,7 @@ RUN apk add --update \
 		make \
 	&& docker-php-ext-install mbstring \
 	&& docker-php-ext-install tokenizer \
-#	&& docker-php-ext-install dom \
 	&& docker-php-ext-install iconv \
-#	&& docker-php-ext-install pear \
-#	&& docker-php-ext-install mysqli \
 	&& docker-php-ext-install opcache \
 	&& apk add --update icu-dev \
 	&& docker-php-ext-install intl \
@@ -35,6 +32,24 @@ RUN apk add --update \
 	RUN apk add --update \
 		libevent-dev \
 	&& docker-php-ext-install phar 
+
+	RUN apk add --update \
+		libxml2-dev
+	RUN docker-php-ext-install dom
+	RUN apk add --update \
+		libpng-dev
+	RUN docker-php-ext-install gd
+	RUN docker-php-ext-install ctype
+	RUN docker-php-ext-install xmlwriter
+#	RUN docker-php-ext-install xmlreader
+	RUN docker-php-ext-install zip
+	RUN docker-php-ext-install posix
+	RUN docker-php-ext-install json
+	RUN docker-php-ext-install fileinfo
+	RUN apk add --update \
+		libpng-dev gettext-dev curl-dev
+	RUN docker-php-ext-install gettext
+	RUN docker-php-ext-install curl
 
 	RUN apk del \
 		autoconf \
@@ -76,36 +91,10 @@ RUN apk add --update \
 		zlib-dev \
          && rm -rf /tmp/* /var/cache/apk/*
 
-##php7-tokenizer-7.0.7-25.1.x86_64
-#php7-dom-7.0.7-25.1.x86_64
-#php7-mysql-7.0.7-25.1.x86_64
-#php7-gd-7.0.7-25.1.x86_64
-#php7-ctype-7.0.7-25.1.x86_64
-#php7-7.0.7-25.1.x86_64
-#php7-iconv-7.0.7-25.1.x86_64
-#php7-pear-7.0.7-25.1.noarch
-#php7-mbstring-7.0.7-25.1.x86_64
-#php7-xmlreader-7.0.7-25.1.x86_64
-#php7-phar-7.0.7-25.1.x86_64
-#php7-pdo-7.0.7-25.1.x86_64
-#php7-zip-7.0.7-25.1.x86_64
-#php7-sqlite-7.0.7-25.1.x86_64
-#php7-posix-7.0.7-25.1.x86_64
-#php7-json-7.0.7-25.1.x86_64
-#php7-pear-Archive_Tar-7.0.7-25.1.noarch
-#apache2-mod_php7-7.0.7-25.1.x86_64
-#php7-xmlwriter-7.0.7-25.1.x86_64
-#php7-sockets-7.0.7-25.1.x86_64
-#php7-fileinfo-7.0.7-25.1.x86_64
-#php7-gettext-7.0.7-25.1.x86_64
-#php7-pgsql-7.0.7-25.1.x86_64
-#php7-curl-7.0.7-25.1.x86_64
-#php7-zlib-7.0.7-25.1.x86_64
-
-#COPY ./config.php /usr/local/scenemodels/config.php
-
 COPY ./scenemodels /scenemodels
-RUN chown -R www-data.www-data /scenemodels
+RUN chown -R root.root /scenemodels
+RUN find /scenemodels -type d -not -perm 755 -exec chmod 755 {} \;
+RUN find /scenemodels -type f -not -perm 644 -exec chmod 644 {} \;
 
 ENV PGHOST=127.0.0.1
 ENV PGPORT=5432
