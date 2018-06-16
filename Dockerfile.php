@@ -91,11 +91,6 @@ RUN apk add --update \
 		zlib-dev \
          && rm -rf /tmp/* /var/cache/apk/*
 
-COPY ./scenemodels /scenemodels
-RUN chown -R root.root /scenemodels
-RUN find /scenemodels -type d -not -perm 755 -exec chmod 755 {} \;
-RUN find /scenemodels -type f -not -perm 644 -exec chmod 644 {} \;
-
 ENV PGHOST=127.0.0.1
 ENV PGPORT=5432
 ENV PGDATABASE=scenemodels
