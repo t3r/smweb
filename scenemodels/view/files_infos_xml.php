@@ -20,13 +20,18 @@
 
 header('Content-Type: text/xml');
 
-?>
-<?xml version="1.0" standalone="yes" ?>
-<files>
-<?php
+  $writer = new XMLWriter();  
+  $writer->openURI('php://output');  
+  $writer->startDocument('1.0','UTF-8');  
+  $writer->setIndent(2);   
+    $writer->startElement('files');  
     foreach ($filesInfos as $fileInfo) {
-        echo '<file><name>'.$fileInfo->getFilename().'</name>'.
-                '<size>'.\FormatUtils::formatBytes($fileInfo->getSize()).'</size></file>';
+      $writer->startElement('file');  
+        $writer->writeElement('name',$fileInfo->getFilename());
+        $writer->writeElement('size',\FormatUtils::formatBytes($fileInfo->getSize()));
+      $writer->endElement();    
     }
+    $writer->endElement();  
+  $writer->endDocument();   
+$writer->flush();
 ?>
-</files>
