@@ -1,0 +1,30 @@
+version: '3.2'
+services:
+  web:
+    image: flightgear/smweb:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    ports:
+      - "8080:80"
+    volumes:
+      - scenemodels:/scenemodels/
+  php:
+    image: flightgear/smphp:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.php
+    volumes:
+      - scenemodels:/scenemodels/
+    environment:
+      # Adjust to your settings
+      - "PGHOST=postgres.example.com"
+      - "PGPORT=5432"
+      - "PGDATABASE=scenemodels"
+      - "PGUSER=flightgear"
+      - "PGPASSWORD=secret"
+      # extra args to sendmail (busybox implementation) to use TLS
+      # adjust mailhost.example.com, SmtpUser and SmtpPassword
+      - "MAILARGS=-v -fnoreply@flightgear.org -H 'exec openssl s_client -quiet -tls1  -connect mailhost.example.com:465' -amLOGIN '-auSmtpUser' '-apSmtpPassword'"
+volumes:
+  scenemodels:
