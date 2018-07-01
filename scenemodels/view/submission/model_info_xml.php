@@ -1,15 +1,16 @@
 <?php
 
 header('Content-Type: text/xml');
-echo "<?xml version=\"1.0\" standalone=\"yes\" ?>\n";
 
-// Showing the results.
-echo "<model><name>"
-     .htmlspecialchars($modelMD->getName())
-     ."</name><notes>"
-     .htmlspecialchars($modelMD->getDescription())
-     ."</notes><author>"
-     .$modelMD->getAuthor()->getId()
-         ."</author></model>";
-
+  $writer = new XMLWriter();
+  $writer->openURI('php://output');
+  $writer->startDocument('1.0','UTF-8');
+  $writer->setIndent(2);
+    $writer->startElement('model');
+      $writer->writeElement('name',htmlspecialchars($modelMD->getName()));
+      $writer->writeElement('notes',htmlspecialchars($modelMD->getDescription()));
+      $writer->writeElement('author',$modelMD->getAuthor()->getId());
+    $writer->endElement();
+  $writer->endDocument();
+$writer->flush();
 ?>

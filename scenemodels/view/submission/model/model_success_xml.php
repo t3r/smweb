@@ -4,8 +4,14 @@
  */
 
 header('Content-Type: text/xml');
+
+  $writer = new XMLWriter();
+  $writer->openURI('php://output');
+  $writer->startDocument('1.0','UTF-8');
+  $writer->setIndent(2);
+    $writer->startElement('success');
+      $writer->writeElement('requestId',$updatedReq->getId());
+    $writer->endElement();
+  $writer->endDocument();
+$writer->flush();
 ?>
-<?xml version="1.0" standalone="yes" ?>
-<success>
-    <requestId><?php echo $updatedReq->getId() ?></requestId>
-</success>
