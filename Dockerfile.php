@@ -48,9 +48,9 @@ RUN apk add --update \
 	&&  apk add --update \
 		libpng-dev gettext-dev curl-dev \
 	&&  docker-php-ext-install gettext \
-	&&  docker-php-ext-install curl \
-	\
-	&&  apk del \
+	&&  docker-php-ext-install curl
+
+	RUN apk del \
 		autoconf \
 		bash \
 		binutils \
@@ -87,8 +87,8 @@ RUN apk add --update \
 		re2c \
 		readline \
 		sqlite-libs \
-		zlib-dev \
-         && rm -rf /tmp/* /var/cache/apk/*
+		zlib-dev || true
+         RUN rm -rf /tmp/* /var/cache/apk/*
 
 ENV PGHOST=127.0.0.1
 ENV PGPORT=5432
