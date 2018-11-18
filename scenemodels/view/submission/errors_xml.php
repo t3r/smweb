@@ -16,4 +16,3 @@ header('Content-Type: text/xml');
   $writer->endDocument();
 $writer->flush();
 ?>
-</errors>
