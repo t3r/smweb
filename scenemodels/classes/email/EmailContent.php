@@ -48,14 +48,12 @@ class EmailContent {
         $headers  = "MIME-Version: 1.0\r\n";
         $headers .= "From: " . $from . "\r\n";
         if ($backend) {
-            // Setting maintainers (will have to be moved somewhere on sphere)
-//            include "/srv/sceneryweb/maintainers";
             if( $to !== '' ) {
                 // sourceforge mailing-list does not like to be in Bcc
-                $maintainers = "Cc: FlightGear Scenemodels Review <flightgear-scenemodels-review@lists.sourceforge.net>" ."\r\n";
+                $maintainers = "Cc: flightgear-scenemodels-review@lists.sourceforge.net" ."\r\n";
                 $headers .= $maintainers;
             } else {
-                $to = "FlightGear Scenemodels Review <flightgear-scenemodels-review@lists.sourceforge.net>" ."\r\n";
+                $to = "flightgear-scenemodels-review@lists.sourceforge.net" ."\r\n";
             }
         }
         $headers .= "X-Mailer: PHP-" . phpversion() . "\r\n";
