@@ -245,24 +245,10 @@ class ObjectDAO extends PgSqlDAO implements IObjectDAO {
     
     public function detectNearbyObjects($lat, $lon, $obModelId, $dist = 15) {
         // Querying...
-        $query = "SELECT (ST_Distance_Spheroid(
-            (SELECT wkb_geometry
-            FROM fgs_objects
-            WHERE ob_model = ".pg_escape_string($obModelId)."
-            ORDER BY ABS( ST_Distance_Spheroid(
-                    (wkb_geometry),
-                    (ST_PointFromText('POINT(".pg_escape_string($lon)." ".pg_escape_string($lat).")', 4326)),
-                    'SPHEROID[\"WGS84\",6378137.000,298.257223563]'
-                ) ) ASC
-            LIMIT 1),
-            (ST_PointFromText('POINT(".pg_escape_string($lon)." ".pg_escape_string($lat).")', 4326)),
-            'SPHEROID[\"WGS84\",6378137.000,298.257223563]'
-        ))::integer < $dist";
-        
-        $result = $this->database->query($query);
-        $row = pg_fetch_row($result);
-
-        return ($row[0] == "t");
+        $query = "SELECT fn_getnearestobject(".pg_escape_string($obModelId).","
+                                              .pg_escape_string($lon).","
+                                              .pg_escape_string($lat).")";
+        return ($row[0] > 0);
     }
 }
 
