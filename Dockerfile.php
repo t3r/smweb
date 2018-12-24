@@ -23,6 +23,7 @@ RUN apk add --update \
 	&& pecl config-set php_ini /usr/local/etc/php/bogus.ini \
 	&& apk add --update \
 		libevent-dev \
+		libzip-dev \
 	&& pecl install event \
 	&& docker-php-ext-enable event \
 	&& mv /usr/local/etc/php/conf.d/docker-php-ext-event.ini \
