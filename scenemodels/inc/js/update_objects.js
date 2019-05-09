@@ -111,6 +111,10 @@ function update_country_aux(hreq, country_id)
 {
     if (hreq.readyState == 4) //checks that the request is finished       
     {
+        if (hreq.responseXML.getElementsByTagName("country")[0].childNodes.length == 0) {
+            // no country found/returned. Leave country selection unchanged
+            return;
+        }
         var country=hreq.responseXML.getElementsByTagName("country")[0].childNodes[0].nodeValue;
 
         var ddl = document.getElementById(country_id);
