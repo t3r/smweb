@@ -40,12 +40,14 @@ class AddModelController extends ModelRequestController {
      */
     public function formAction() {
         parent::menu();
-        
+
         // Show all the families other than the static family
         $modelsGroups = $this->getModelsGroups();
         $countries = $this->objectDaoRO->getCountries();
         $nbModels = $this->getModelDaoRO()->countTotalModels();
         $authors = $this->authorDaoRO->getAllAuthors(0, "ALL");
+        $usages = \model\TheObject::usages();
+        $tokens = \model\TheObject::tokens();
 
         include 'view/submission/model/add_model_form.php';
     }
@@ -59,7 +61,7 @@ class AddModelController extends ModelRequestController {
         
         /** STEP 1 : CHECK IF ALL FILES WERE RECEIVED */
         $exceptions = $this->checkFilesArray();
-        
+
         /** STEP 2 : MOVE THUMBNAIL, AC3D, PNG AND XML FILES IN TMP DIRECTORY (Will be removed later on) */
         $thumbName = $_FILES['mo_thumbfile']['name'];
         $ac3dName  = $_FILES['ac3d_file']['name'];
@@ -127,6 +129,10 @@ class AddModelController extends ModelRequestController {
         $offset    = strip_tags($this->getVar('offset'));
         $heading   = strip_tags($this->getVar('heading'));
         $country   = $this->getVar('ob_country');
+        $country   = $this->getVar('ob_country');
+        $usageId  = $this->getVar('ob_usage_id');
+        $tokenId  = $this->getVar('ob_token_id');
+
         $objectValidator = \submission\ObjectValidator::getPositionValidator($longitude, $latitude, $country, $offset, $heading);
 
         $validatorsSet = new \submission\ValidatorsSet();
@@ -183,7 +189,7 @@ class AddModelController extends ModelRequestController {
         $newModel->setThumbnail($thumbFile);
 
         $newObject = $objectFactory->createObject(-1, -1, $longitude, $latitude, $country, 
-                $offset, \ObjectUtils::headingSTG2True($heading), 1, $name);
+                $offset, \ObjectUtils::headingSTG2True($heading), 1, $name, $usageId, $tokenId);
 
         // Check captcha
         if (!$this->checkCaptcha()) {

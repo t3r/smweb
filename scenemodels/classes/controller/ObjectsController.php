@@ -44,6 +44,8 @@ class ObjectsController extends ControllerMenu {
             $object = $this->objectDaoRO->getObject($id);
             $modelMetadata = $this->getModelDaoRO()->getModelMetadata($object->getModelId());
             $group = $this->objectDaoRO->getObjectsGroup($object->getGroupId());
+            $usages = \model\TheObject::usages();
+            $tokens = \model\TheObject::tokens();
             include 'view/objectview.php';
         } else {
             $pageTitle = "Object ID not valid";

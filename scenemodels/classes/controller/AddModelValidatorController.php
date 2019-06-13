@@ -48,7 +48,9 @@ class AddModelValidatorController extends ValidatorController {
                 // Check first if the author already exist
                 $authorExist = $this->authorDaoRO->getAuthorByEmail($newAuthor->getEmail()) != null;
             }
-            
+            $usages = \model\TheObject::usages();
+            $tokens = \model\TheObject::tokens();
+
             include 'view/submission/model/validator/view_add_model_request.php';
         }
     }

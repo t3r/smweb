@@ -17,11 +17,12 @@ class ObjectDAO extends PgSqlDAO implements IObjectDAO {
         $objPos = $obj->getPosition();
         $obOffset = $objPos->getElevationOffset();
         
-        $query = "INSERT INTO fgs_objects (ob_id, ob_text, wkb_geometry, ob_gndelev, ob_elevoffset, ob_heading, ob_country, ob_model, ob_group) ".
+        $query = "INSERT INTO fgs_objects (ob_id, ob_text, wkb_geometry, ob_gndelev, ob_elevoffset, ob_heading, ob_country, ob_model, ob_usage, ob_token, ob_group) ".
                 "VALUES (DEFAULT, '".pg_escape_string($obj->getDescription())."', ST_PointFromText('POINT(".pg_escape_string($objPos->getLongitude())." ".pg_escape_string($objPos->getLatitude()).")', 4326), -9999, ".
                 (($obOffset == 0 || $obOffset == '')?"NULL":pg_escape_string($obOffset)) .
-                ", ".pg_escape_string($objPos->getOrientation()).", '".pg_escape_string($obj->getCountry()->getCode())."', ".pg_escape_string($obj->getModelId()).", 1) RETURNING ob_id;";
-    
+                ", ".pg_escape_string($objPos->getOrientation()).", '".pg_escape_string($obj->getCountry()->getCode())."', ".pg_escape_string($obj->getModelId()).
+                ", ".pg_escape_string($obj->getUsageId()).", ".pg_escape_string($obj->getTokenId()).", 1) RETURNING ob_id;";
+
         $result = $this->database->query($query);
         
         if (!$result) {
@@ -40,8 +41,10 @@ class ObjectDAO extends PgSqlDAO implements IObjectDAO {
                  "SET ob_text=$$".pg_escape_string($object->getDescription())."$$, ".
                  "wkb_geometry=ST_PointFromText('POINT(".pg_escape_string($objPos->getLongitude())." ".pg_escape_string($objPos->getLatitude()).")', 4326),".
                  "ob_country='".pg_escape_string($object->getCountry()->getCode())."',".
-                 "ob_gndelev=-9999, ob_elevoffset=".pg_escape_string($objPos->getElevationOffset()).", ob_heading=".pg_escape_string($objPos->getOrientation()).", ob_model=".pg_escape_string($object->getModelId()).", ob_group=1 ".
-                 "WHERE ob_id=".pg_escape_string($object->getId()).";";
+                 "ob_gndelev=-9999, ob_elevoffset=".pg_escape_string($objPos->getElevationOffset()).", ob_heading=".pg_escape_string($objPos->getOrientation()).", ob_model=".pg_escape_string($object->getModelId()).", ".
+                 "ob_usage=".pg_escape_string($object->getUsageId()).",".
+                 "ob_token=".pg_escape_string($object->getTokenId()).",".
+                 "ob_group=1 WHERE ob_id=".pg_escape_string($object->getId()).";";
         
         $result = $this->database->query($query);
         
@@ -203,7 +206,9 @@ class ObjectDAO extends PgSqlDAO implements IObjectDAO {
         $object->setDescription($objectRow['ob_text']);
         $object->setGroupId($objectRow['ob_group']);
         $object->setLastUpdated(new \DateTime($objectRow['ob_modified']));
-        
+        $object->setUsageId($objectRow['ob_usage']);
+        $object->setTokenId($objectRow['ob_token']);
+
         return $object;
     }
     

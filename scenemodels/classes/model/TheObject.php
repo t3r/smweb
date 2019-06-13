@@ -23,6 +23,8 @@ class TheObject {
     
     private $description;
     private $groupId;
+    private $usageId;
+    private $tokenId;
     
     function __construct() {
         $this->position = new Position();
@@ -92,6 +94,32 @@ class TheObject {
     public function getPosition() {
         return $this->position;
     }
-}
 
+    public function getUsageId() {
+        return $this->usageId;
+    }
+
+    public function setUsageId($usageId) {
+        $this->usageId = $usageId;
+    }
+
+    public function getTokenId() {
+        return $this->tokenId;
+    }
+
+    public function setTokenId($tokenId) {
+        $this->tokenId = $tokenId;
+    }
+
+    /**
+     * static lists of allowed usages and tokens
+     */
+    public static function usages() {
+        return array("<default>", "StaticAircraft", "ApronVehicles","AIObjects");
+    }
+
+    public static function tokens() {
+        return array("<default>", "AI_OBJECT");
+    }
+}
 ?>

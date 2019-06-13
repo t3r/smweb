@@ -28,6 +28,8 @@ namespace controller;
 class ObjectValidatorController extends ValidatorController {
     public function viewRequestAction() {
         $request = $this->getRequest();
+        $usages = \model\TheObject::usages();
+        $tokens = \model\TheObject::tokens();
         if ($request != null) {
             include 'view/submission/object/validator/object_submission.php';
         }

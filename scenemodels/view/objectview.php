@@ -14,7 +14,7 @@ $objPos = $object->getPosition();
 
 <table>
     <tr>
-        <td style="width: 320px" rowspan="9"><img src="app.php?c=Models&amp;a=thumbnail&amp;id=<?php echo $object->getModelId(); ?>" alt="Thumbnail"/></td>
+        <td style="width: 320px" rowspan="11"><img src="app.php?c=Models&amp;a=thumbnail&amp;id=<?php echo $object->getModelId(); ?>" alt="Thumbnail"/></td>
         <td style="width: 320px">Unique ID</td>
         <td><?php echo $object->getId(); ?></td>
     </tr>
@@ -52,6 +52,14 @@ $objPos = $object->getPosition();
     <tr>
         <td>Group</td>
         <td><?php echo "<a href=\"app.php?c=Objects&amp;a=search&amp;group=".$object->getGroupId()."\">".$group->getName()."</a>"; ?></td>
+    </tr>
+    <tr>
+        <td>Usage</td>
+        <td><?php echo htmlspecialchars($usages[$object->getUsageId()]); ?></td>
+    </tr>
+    <tr>
+        <td>STG Token</td>
+        <td><?php echo htmlspecialchars($tokens[$object->getTokenId()]); ?></td>
     </tr>
     <tr>
         <td>Model</td>

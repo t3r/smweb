@@ -84,6 +84,14 @@ function validateForm() {
             <td><?php echo $newModelMD->getModelsGroup()->getName(); ?></td>
         </tr>
         <tr>
+            <td>Usage</td>
+            <td><?php echo htmlspecialchars($usages[$newObj->getUsageId()]); ?></td>
+        </tr>
+        <tr>
+            <td>STG Token</td>
+            <td><?php echo htmlspecialchars($tokens[$newObj->getTokenId()]); ?></td>
+        </tr>
+        <tr>
             <td>Proposed Path Name</td>
             <td><?php echo $newModelMD->getFilename(); ?></td>
         </tr>

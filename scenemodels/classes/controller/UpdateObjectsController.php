@@ -118,6 +118,8 @@ class UpdateObjectsController extends RequestController {
         if (\FormChecker::isLongitude($this->getVar('lon'))) {
             $defaultLon = $this->getVar('lon');
         }
+        $usages = \model\TheObject::usages();
+        $tokens = \model\TheObject::tokens();
         
         include 'view/submission/object/update_object_form.php';
     }
@@ -144,7 +146,9 @@ class UpdateObjectsController extends RequestController {
         $new_offset = $this->getVar('new_offset');
         $new_orientation = $this->getVar('new_heading');
         $safe_new_ob_text = $this->getVar('new_ob_text');
-        
+        $new_usageId = $this->getVar('new_usage_id');
+        $new_tokenId = $this->getVar('new_token_id');
+
         $idToUpdate = $this->getVar('id_to_update');
         if (!\FormChecker::isObjectId($idToUpdate)) {
             $pageTitle = 'Objects update Form';
@@ -178,7 +182,8 @@ class UpdateObjectsController extends RequestController {
             $oldObject = $this->objectDaoRO->getObject($idToUpdate);
             $newObject = $objectFactory->createObject($idToUpdate, $modelId,
                     $new_long, $new_lat, $new_country, 
-                    $new_offset, \ObjectUtils::headingSTG2True($new_orientation), 1, $safe_new_ob_text);
+                    $new_offset, \ObjectUtils::headingSTG2True($new_orientation), 1, $safe_new_ob_text,
+                    $new_usageId, $new_tokenId);
 
             $oldModelMD = $this->getModelDaoRO()->getModelMetadata($oldObject->getModelId());
             $newModelMD = $this->getModelDaoRO()->getModelMetadata($modelId);
