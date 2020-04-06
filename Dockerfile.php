@@ -1,16 +1,14 @@
 FROM php:7.3-fpm-stretch
 RUN apt-get -y update && apt-get -y install --no-install-recommends \
-  libcurl4-openssl-dev \
-  libicu-dev \
-  libjpeg-dev \
-  libpng-dev \
-  libpq-dev \
-  libssl-dev \
-  libxml2-dev \
-  libzip-dev
-
-#RUN true && \
-#       docker-php-ext-enable event
+      libcurl4-openssl-dev \
+      libicu-dev \
+      libevent-dev \
+      libjpeg-dev \
+      libpng-dev \
+      libpq-dev \
+      libssl-dev \
+      libxml2-dev \
+      libzip-dev
 
 RUN docker-php-ext-install \
           mbstring \
@@ -30,8 +28,9 @@ RUN docker-php-ext-install \
           fileinfo \
           gettext \
           curl \
-          pgsql
-
+          pgsql && \
+    pecl install event && \
+    docker-php-ext-enable event
 ENV PGHOST=127.0.0.1
 ENV PGPORT=5432
 ENV PGDATABASE=scenemodels
