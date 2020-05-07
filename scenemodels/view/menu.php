@@ -61,7 +61,7 @@
     <li class="mainitems">
         <div class="headerlinks"><a href="/stats.php">Statistics</a></div>
         <ul class="submenus">
-            <li><a href="/coverage.php">Coverage</a></li>
+            <li><a href="map/">Coverage</a></li>
             <!--li><a href="/stats/">Access</a></li-->
         </ul>
     </li>
