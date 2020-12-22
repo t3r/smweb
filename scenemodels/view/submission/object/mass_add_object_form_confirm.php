@@ -2,7 +2,7 @@
 $pageTitle = "Objects massive addition form";
 require 'view/header.php';
 ?>
-<script src="/inc/js/check_form.js" type="text/javascript"></script>
+<script src="static/inc/js/check_form.js" type="text/javascript"></script>
 <script type ="text/javascript">
 function update_countries(code,n) {
     for(var i = 1; i <= n; i++) {

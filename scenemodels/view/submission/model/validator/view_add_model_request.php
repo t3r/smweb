@@ -165,7 +165,7 @@ function validateForm() {
         <tr>
             <td>Map</td>
             <td>
-                <object data="/map/?lon=<?=$newObjPos->getLongitude()?>&amp;lat=<?=$newObjPos->getLatitude()?>&amp;z=14" type="text/html" width="320" height="240"></object>
+                <object data="/static/map/index.html?lon=<?=$newObjPos->getLongitude()?>&amp;lat=<?=$newObjPos->getLatitude()?>&amp;z=14" type="text/html" width="320" height="240"></object>
             </td>
         </tr>
         <tr>

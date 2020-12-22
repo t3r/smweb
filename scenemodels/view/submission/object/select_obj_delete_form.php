@@ -24,7 +24,7 @@ include 'view/header.php';
 ?>
 
 
-<script src="/inc/js/check_form.js" type="text/javascript"></script>
+<script src="static/inc/js/check_form.js" type="text/javascript"></script>
 <script type="text/javascript">
 /*<![CDATA[*/
 function validateForm()
@@ -104,7 +104,7 @@ function validateForm()
             <td><span title="This is the picture of the object you want to delete"><label>Picture</label></span></td>
             <td><a href="/app.php?c=Models&amp;a=view&amp;id=<?php $model_id = $candidateObj->getModelId(); echo $model_id; ?>"><img src="app.php?c=Models&amp;a=thumbnail&amp;id=<?php echo $model_id; ?>" alt="Thumbnail"/></a></td>
             <td><span title="This is the map around the object you want to delete"><label>Map</label></span></td>
-            <td><object data="/map/?lon=<?=$longitude?>&amp;lat=<?=$latitude?>&amp;z=14" type="text/html" width="300" height="225"></object></td>
+            <td><object data="/static/map/index.html?lon=<?=$longitude?>&amp;lat=<?=$latitude?>&amp;z=14" type="text/html" width="300" height="225"></object></td>
         </tr>
 <?php
         $is_first = false;

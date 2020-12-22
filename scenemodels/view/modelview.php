@@ -8,7 +8,7 @@ td.sizecol {
 </style>
 <script type="text/javascript">
 function popmap(lat,lon,zoom) {
-    popup = window.open("/map?z="+zoom+"&lat="+lat+"&lon="+lon, "map", "height=500,width=500,scrollbars=no,resizable=no");
+    popup = window.open("/static/map/index.html?z="+zoom+"&lat="+lat+"&lon="+lon, "map", "height=500,width=500,scrollbars=no,resizable=no");
     popup.focus();
 }
 </script>

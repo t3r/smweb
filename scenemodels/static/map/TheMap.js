@@ -163,7 +163,7 @@ function(jquery, fgtile) {
 
             onEachFeature : function(feature, layer) {
                 var popupContent = "<div><a href='/app.php?c=Objects&a=view&id=" + feature.id + "' target='_blank'>Object #" + feature.id + "</a></div>";
-                popupContent += "<a href='/map/?lat=" + feature.geometry.coordinates[1] +
+                popupContent += "<a href='index.html?lat=" + feature.geometry.coordinates[1] +
                                                                             "&lon=" + feature.geometry.coordinates[0] +
                                                                             "&z=13&obj=" + feature.properties.model_id + "'>permalink</a>";
                 if (feature.properties) {
@@ -199,7 +199,7 @@ function(jquery, fgtile) {
             var self = this;
             self.clearLayers();
             var bounds = map.getBounds();
-            var url = "/scenemodels/objects?w=" + bounds.getWest() 
+            var url = "https://api.flightgear.org/scenemodels/objects?w=" + bounds.getWest() 
                                        + "&e=" + bounds.getEast() 
                                        + "&n=" + bounds.getNorth() 
                                        + "&s=" + bounds.getSouth(); 
@@ -248,7 +248,7 @@ function(jquery, fgtile) {
 
             onEachFeature : function(feature, layer) {
                 var popupContent = "";
-                popupContent += "<a href='/map/?lat=" + feature.geometry.coordinates[1] +
+                popupContent += "<a href='index.html?lat=" + feature.geometry.coordinates[1] +
                                                                             "&lon=" + feature.geometry.coordinates[0] +
                                                                             "&z=13&obj=" + feature.properties.model_id + "'>permalink</a>";
                 if (feature.properties) {
@@ -270,7 +270,7 @@ function(jquery, fgtile) {
             var self = this;
             var bounds = map.getBounds();
             self.clearLayers();
-            var url = "/scenemodels/signs?w=" + bounds.getWest() 
+            var url = "https://api.flightgear.org/scenemodels/signs?w=" + bounds.getWest() 
                                        + "&e=" + bounds.getEast() 
                                        + "&n=" + bounds.getNorth() 
                                        + "&s=" + bounds.getSouth(); 
@@ -302,7 +302,7 @@ function(jquery, fgtile) {
 
             onEachFeature : function(feature, layer) {
                 var popupContent = "";
-                popupContent += "<a href='/map/?lat=" + feature.geometry.coordinates[1] +
+                popupContent += "<a href='index.html?lat=" + feature.geometry.coordinates[1] +
                                                                             "&lon=" + feature.geometry.coordinates[0] +
                                                                             "&z=13'>permalink</a>";
                 if (feature.properties) {
@@ -329,7 +329,7 @@ function(jquery, fgtile) {
             var self = this;
             var bounds = map.getBounds();
             self.clearLayers();
-            var url = "/scenemodels/navaids/within?w=" + bounds.getWest() 
+            var url = "https://api.flightgear.org/scenemodels/navaids/within?w=" + bounds.getWest() 
                                        + "&e=" + bounds.getEast() 
                                        + "&n=" + bounds.getNorth() 
                                        + "&s=" + bounds.getSouth(); 

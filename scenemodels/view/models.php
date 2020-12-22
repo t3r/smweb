@@ -5,13 +5,13 @@ require 'view/header.php';
 
 <script type="text/javascript">
   function popmap(lat,lon,zoom) {
-    popup = window.open("/map?z="+zoom+"&lat="+lat+"&lon="+lon, "map", "height=500,width=500,scrollbars=no,resizable=no");
+    popup = window.open("/static/map/index.html?z="+zoom+"&lat="+lat+"&lon="+lon, "map", "height=500,width=500,scrollbars=no,resizable=no");
     popup.focus();
   }
 </script>
 
 <h1>FlightGear Scenery Model Directory</h1>
-  <p><a href="rss/models.php"><img src="img/icons/rss.png"> Subscribe to recent models feed</a></p>
+  <p><a href="rss/models.php"><img src="static/img/icons/rss.png"> Subscribe to recent models feed</a></p>
   <table>
     <tr class="bottom">
         <td colspan="2" align="center">

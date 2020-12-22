@@ -29,7 +29,7 @@ require 'view/header.php';
         chartPie.draw(data, optionsPie);
       }
 
-      $.getJSON('/scenemodels/stats/models/byauthor', function(data) {
+      $.getJSON(' https://api.flightgear.org/scenemodels/stats/models/byauthor', function(data) {
         var dataTable = new google.visualization.DataTable();
         dataTable.addColumn('string', 'Author');
         dataTable.addColumn('number', 'Objects');
@@ -40,7 +40,7 @@ require 'view/header.php';
         drawPie(dataTable, 'chart_pie_authors_div' );
       }); 
 
-      $.getJSON('/scenemodels/stats/models/bycountry', function(data) {
+      $.getJSON(' https://api.flightgear.org/scenemodels/stats/models/bycountry', function(data) {
         var dataTable = new google.visualization.DataTable();
         dataTable.addColumn('string', 'Country');
         dataTable.addColumn('number', 'Objects');
@@ -51,7 +51,7 @@ require 'view/header.php';
         drawPie(dataTable, 'chart_pie_div' );
       }); 
 
-      $.getJSON('/scenemodels/stats/all', function(data) {
+      $.getJSON(' https://api.flightgear.org/scenemodels/stats/all', function(data) {
         // Create and populate the data table.
         var dataObjects = new google.visualization.DataTable();
         dataObjects.addColumn('date', 'Date');

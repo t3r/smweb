@@ -20,6 +20,10 @@
 
 namespace email;
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
 /**
  * Email content
  *
@@ -43,21 +47,40 @@ class EmailContent {
     }
     
     public function sendEmail($to, $backend) {
-        $from = "\"FlightGear Scenery Database\" <no-reply@flightgear.org>";
 
-        $headers  = "MIME-Version: 1.0\r\n";
-        $headers .= "From: " . $from . "\r\n";
-        if ($backend) {
-            if( $to !== '' ) {
-                // sourceforge mailing-list does not like to be in Bcc
-                $maintainers = "Cc: flightgear-scenemodels-review@lists.sourceforge.net" ."\r\n";
-                $headers .= $maintainers;
-            } else {
-                $to = "flightgear-scenemodels-review@lists.sourceforge.net" ."\r\n";
-            }
+        $mail = new PHPMailer();
+        $mail->isSMTP();
+        $mail->SMTPDebug = SMTP::DEBUG_OFF;
+        $mail->SMTPAuth = true;
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+
+        $mail->Host = getenv('SMTPHOST');
+        $mail->Port = getenv('SMTPPORT');
+        $mail->Username = getenv('SMTPUSER');
+        $mail->Password = getenv('SMTPPASSWORD');
+
+        $mail->setFrom('no-reply@flightgear.org', 'FlightGear Scenery Database');
+
+        if( isset($to) ) {
+            $mail->addAddress($to);
         }
-        $headers .= "X-Mailer: PHP-" . phpversion() . "\r\n";
-//error_log($this->message);
-        mail($to, $this->subject, $this->message, $headers, getenv("MAILARGS"));
+
+        if ($backend) {
+            $maintainers = getenv('MAINTAINERS');
+            if( isset($to) ) {
+                $mail->addCC($maintainers);
+            } else {
+                $mail->addAddress($maintainers);
+            }
+        } else {
+        }
+
+        $mail->Subject = $this->subject;
+        $mail->Body = $this->message;
+
+        if (!$mail->send()) {
+           error_log( 'Mailer Error: ' . $mail->ErrorInfo );
+        }
+
     }
 }

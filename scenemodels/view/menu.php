@@ -1,4 +1,4 @@
-<script type="text/javascript" src="/inc/js/menu.js"></script>
+<script type="text/javascript" src="/static/inc/js/menu.js"></script>
 
 <ul id="csstopmenu">
     <li class="mainitems" style="border-left-width: 1px">

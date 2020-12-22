@@ -3,7 +3,7 @@ require 'view/header.php';
 ?>
 <script type="text/javascript">
   function popmap(lat,lon) {
-    popup = window.open("/map?z=12&lat="+lat+"&lon="+lon, "map", "height=500,width=500,scrollbars=no,resizable=no");
+    popup = window.open("/static/map/index.html?z=12&lat="+lat+"&lon="+lon, "map", "height=500,width=500,scrollbars=no,resizable=no");
     popup.focus();
   }
 </script>
@@ -107,15 +107,15 @@ require 'view/header.php';
                  "  <td>".$objPos->getGroundElevation()."<br/>".$objOffset."</td>\n" .
                  "  <td>".$objPos->getOrientation()."</td>\n" .
                  "  <td style=\"width: 58px; text-align: center\">\n" .
-                 "  <a href=\"app.php?c=UpdateObjects&amp;a=updateForm&amp;id_to_update=".$object->getId()."\"><img class=\"icon\" src=\"/img/icons/edit.png\" alt=\"edit\"/></a>";
+                 "  <a href=\"app.php?c=UpdateObjects&amp;a=updateForm&amp;id_to_update=".$object->getId()."\"><img class=\"icon\" src=\"static/img/icons/edit.png\" alt=\"edit\"/></a>";
             if (!$modelIsStaticMap[$object->getModelId()]) {
 ?>
                 <a href="app.php?c=DeleteObjects&amp;a=confirmDeleteForm&amp;delete_choice=<?php echo $object->getId(); ?>">
-                    <img class="icon" src="/img/icons/delete.png" alt="delete"/>
+                    <img class="icon" src="static/img/icons/delete.png" alt="delete"/>
                 </a>
 <?php
             }
-            echo "    <a href=\"javascript:popmap(".$objPos->getLatitude().",".$objPos->getLongitude().")\"><img class=\"icon\" src=\"/img/icons/world.png\" alt=\"map\"/></a>" .
+            echo "    <a href=\"javascript:popmap(".$objPos->getLatitude().",".$objPos->getLongitude().")\"><img class=\"icon\" src=\"static/img/icons/world.png\" alt=\"map\"/></a>" .
                  "  </td>\n" .
                  "</tr>\n";
         }

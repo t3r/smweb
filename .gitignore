@@ -1,2 +1,5 @@
 *.swp
 docker-compose.yaml
+vendor
+.serverless
+.env

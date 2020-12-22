@@ -49,8 +49,8 @@ class ModelFilesTar implements IModelFiles {
                 $file = $targetPath.'/submitted_files.tar.gz';
                 file_put_contents($file, $archive);                
 
-                $detarCommand = 'tar xvzf '.$file.' -C '.$targetPath. '> /dev/null';
-                system($detarCommand);
+                $phar = new PharData($file);
+                $phar->extractTo($targetPath);
                 
                 // Deletes compressed file
                 unlink($file);

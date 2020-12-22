@@ -65,8 +65,8 @@ case "model\RequestObjectUpdate":
     echo "><td>Heading (STG)</td><td>".\ObjectUtils::headingTrue2STG($oldObjPos->getOrientation())." (STG) - ".$oldObjPos->getOrientation()."(true)</td>".
          "<td>".\ObjectUtils::headingTrue2STG($newObjPos->getOrientation())." (STG) - ".$newObjPos->getOrientation()." (true)</td></tr>";
 
-    echo "<tr><td>Map</td><td><object data=\"/map/?lon=".$oldObjPos->getLongitude()."&amp;lat=".$oldObjPos->getLatitude()."&amp;z=14\" type=\"text/html\" width=\"100%\" height=\"240\"></object></td>".
-         "<td><object data=\"/map/?lon=".$newObjPos->getLongitude()."&amp;lat=".$newObjPos->getLatitude()."&amp;z=14\" type=\"text/html\" width=\"100%\" height=\"240\"></object></td></tr>" .
+    echo "<tr><td>Map</td><td><object data=\"/static/map/index.html?lon=".$oldObjPos->getLongitude()."&amp;lat=".$oldObjPos->getLatitude()."&amp;z=14\" type=\"text/html\" width=\"100%\" height=\"240\"></object></td>".
+         "<td><object data=\"/static/map/index.html?lon=".$newObjPos->getLongitude()."&amp;lat=".$newObjPos->getLatitude()."&amp;z=14\" type=\"text/html\" width=\"100%\" height=\"240\"></object></td></tr>" .
          "</tr>";
     break;
 
@@ -86,7 +86,7 @@ case "model\RequestObjectDelete":
          "<td>".$objDelPos->getElevationOffset()."</td>" .
          "<td>".$objDelPos->getOrientation()."</td>" .
          "<td><a href=\"/app.php?c=Models&amp;a=view&amp;id=".$modelMD->getId()."\">".htmlspecialchars($modelMD->getName())."</a></td>" .
-         "<td><a href=\"/map/?lon=".$objDelPos->getLongitude()."&amp;lat=".$objDelPos->getLatitude()."&amp;z=14\">Map</a></td>" .
+         "<td><a href=\"/static/map/index.html?lon=".$objDelPos->getLongitude()."&amp;lat=".$objDelPos->getLatitude()."&amp;z=14\">Map</a></td>" .
          "</tr>";
     break;
 }

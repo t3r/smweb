@@ -19,10 +19,40 @@
  */
 require_once 'autoload.php';
 
+if( array_key_exists( 'c', $_GET ) && array_key_exists( 'a', $_GET ) ) {
+  $controllerName = '\\controller\\'.ucfirst($_GET['c']).'Controller';
+  $actionName = strtolower($_GET['a']).'Action';
+  // Call the action
+  $controller = new $controllerName;
+  $controller->$actionName();
+} else {
+  $controller = new \controller\IndexController;
+  $controller->indexAction();
+}
 
-$controllerName = '\\controller\\'.ucfirst($_GET['c']).'Controller';
-$actionName = strtolower($_GET['a']).'Action';
+/*
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
 
-// Call the action
-$controller = new $controllerName;
-$controller->$actionName();
+$mail = new PHPMailer();
+$mail->isSMTP();
+$mail->SMTPDebug = SMTP::DEBUG_LOWLEVEL;
+$mail->Host = 'email-smtp.us-east-1.amazonaws.com';
+$mail->Port = 587;
+$mail->SMTPAuth = true;
+$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+$mail->Username = 'AKIAI3CYIYVHSZGHAZ2Q';
+$mail->Password = 'AtFlOFnATsn6iOwCWT0PNGdpUFBS1BZT/X+lAzuKMql7';
+
+$mail->setFrom('noreply@flightgear.org', 'Noreply at FlightGear');
+$mail->addAddress('torsten@t3r.de', 'Torsten Dreyer');
+$mail->Subject = 'PHPMailer test';
+$mail->Body = 'These are great news. Howdy.';
+
+if (!$mail->send()) {
+    echo 'Mailer Error: ' . $mail->ErrorInfo;
+} else {
+    echo 'Message sent!';
+}
+*/

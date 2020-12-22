@@ -223,7 +223,7 @@ $(function() {
                         <input type="text" name="longitude" id="longitude" maxlength="11" value="" onchange="update_map('longitude','latitude');" onkeyup="checkNumeric(this,-180,180);update_country('longitude','latitude','ob_country');validateTabs();" />
                     </td>
                     <td rowspan="5" style="width: 300px; height: 225px;">
-                        <object id="map" data="/map/?z=1&lat=0&lon=0" type="text/html" width="300" height="225"></object>
+                        <object id="map" data="/static/map/index.html?z=1&lat=0&lon=0" type="text/html" width="300" height="225"></object>
                     </td>
                 </tr>
                 <tr>

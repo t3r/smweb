@@ -62,7 +62,7 @@ foreach ($objects as $object) {
         <td><a href="app.php?c=Models&amp;a=view&amp;id=<?php echo $object->getModelId(); ?>"><img src="app.php?c=Models&amp;a=thumbnail&amp;id=<?php echo $object->getModelId(); ?>" alt="Thumbnail"/></a></td>
         <td><span title="This is the map around the object you want to update"><a style="cursor: help; ">Map</a></span></td>
         <td>
-        <object data="/map/?lon=<?php echo $long; ?>&amp;lat=<?php echo $lat; ?>&amp;z=14" type="text/html" width="300" height="225"></object>
+        <object data="/static/map/index.html?lon=<?php echo $long; ?>&amp;lat=<?php echo $lat; ?>&amp;z=14" type="text/html" width="300" height="225"></object>
         </td>
     </tr>
 <?php

@@ -1,7 +1,7 @@
 <?php
 require 'view/header.php';
 ?>
-<script src="inc/js/image_trail.js" type="text/javascript"></script>
+<script src="static/inc/js/image_trail.js" type="text/javascript"></script>
 
 <h1><?php echo $title;?></h1>
 <table>

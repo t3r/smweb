@@ -3,7 +3,7 @@ require 'view/header.php';
 ?>
 
   <h1>FlightGear Scenery Database Latest News</h1>
-  <p><a href="rss/news.php"><img src="img/icons/rss.png"> Subscribe to news feed</a></p>
+  <p><a href="rss/news.php"><img src="static/img/icons/rss.png"> Subscribe to news feed</a></p>
 <?php
     foreach ($newsPosts as $newsPost) {
         echo "<div class=\"paragraph_bloc\">" .

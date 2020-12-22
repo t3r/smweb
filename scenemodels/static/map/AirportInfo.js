@@ -139,7 +139,7 @@ define([
             geoJson = null;
             self.procedures.removeAll();
 
-            var url = "/scenemodels/navdb/airport/" + icao;
+            var url = "https://api.flightgear.org/scenemodels/navdb/airport/" + icao;
             var jqxhr = $.get(url).done(function(data) {
               geoJson = L.geoJson( data.runwaysGeometry, {
                 style: {

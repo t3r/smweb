@@ -88,7 +88,7 @@ function showMap() {
     var objectViewer = document.createElement("object");
     objectViewer.width = "100%";
     objectViewer.height = "99%";
-    objectViewer.data = "/map/?lon=<?=$objPos->getLongitude()?>&lat=<?=$objPos->getLatitude()?>&z=14";
+    objectViewer.data = "/static/map/index.html?lon=<?=$objPos->getLongitude()?>&lat=<?=$objPos->getLatitude()?>&z=14";
     objectViewer.type = "text/html";
     var map = document.getElementById("map");
     map.innerHTML = "";

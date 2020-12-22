@@ -3,8 +3,8 @@ $pageTitle = "Objects addition form";
 $body_onload = "update_models();";
 include 'view/header.php';
 ?>
-<script src="/inc/js/update_objects.js" type ="text/javascript"></script>
-<script src="/inc/js/check_form.js" type="text/javascript"></script>
+<script src="static/inc/js/update_objects.js" type ="text/javascript"></script>
+<script src="static/inc/js/check_form.js" type="text/javascript"></script>
 <script type="text/javascript">
 /*<![CDATA[*/
 window.onload = function() {
@@ -50,8 +50,8 @@ $(function() {
 });
 /*]]>*/
 </script>
-<link rel="stylesheet" href="/css/jquery-ui.min.css" type="text/css"/>
-<script src="/inc/js/jquery-ui.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="static/css/jquery-ui.min.css" type="text/css"/>
+<script src="static/inc/js/jquery-ui.min.js" type="text/javascript"></script>
 
 <h1>Objects addition form</h1>
 
@@ -112,7 +112,7 @@ $(function() {
                         <input type="text" name="long1" id="long1" maxlength="13" value="<?php echo $defaultLon;?>" onkeyup="checkNumeric(form['long1'],-180,180);validateTabs();" onchange="update_map('long1','lat1');update_country('long1','lat1','countryId1');" />
                     </td>
                     <td rowspan="5" style="width: 300px; height: 225px;">
-                        <object id="map" data="/map/?z=1&lat=0&lon=0" type="text/html" width="300" height="225"></object>
+                        <object id="map" data="/static/map/index.html?z=1&lat=0&lon=0" type="text/html" width="300" height="225"></object>
                     </td>
                 </tr>
                 <tr>

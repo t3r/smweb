@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8"> 
-    <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+    <link rel="stylesheet" href="static/css/style.css" type="text/css"/>
     <style type="text/css">
         #canvas {
             height: 100%;
@@ -24,9 +24,9 @@
         }
     </style>
 
-    <script type="text/javascript" src="inc/hangar/gl-matrix-min.js"></script>
-    <script type="text/javascript" src="inc/hangar/polyfill.js"></script>
-    <script type="text/javascript" src="inc/hangar/viewer.js"></script>
+    <script type="text/javascript" src="static/inc/hangar/gl-matrix-min.js"></script>
+    <script type="text/javascript" src="static/inc/hangar/polyfill.js"></script>
+    <script type="text/javascript" src="static/inc/hangar/viewer.js"></script>
 
     <script type="text/javascript">
     var Models = [

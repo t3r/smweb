@@ -10,12 +10,13 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" href="/css/style.css" type="text/css"/>
-    <link rel="stylesheet" href="/css/form.css" type="text/css"/>
-    <link rel="stylesheet" href="/css/lightbox.css" type="text/css"/>
+    <link rel="stylesheet" href="static/css/style.css" type="text/css"/>
+    <link rel="stylesheet" href="static/css/form.css" type="text/css"/>
+    <link rel="stylesheet" href="static/css/lightbox.css" type="text/css"/>
+    <link rel="shortcut icon" type="image/png" href="static/img/logoF.png"/>
     <title><?php echo (isset($pageTitle))?$pageTitle:"FlightGear Scenery Website";?></title>
-    <script type="text/javascript" src="/inc/js/jquery.js"></script>
-    <script type="text/javascript" src="/inc/js/lightbox/lightbox.js"></script>
+    <script type="text/javascript" src="static/inc/js/jquery.js"></script>
+    <script type="text/javascript" src="static/inc/js/lightbox/lightbox.js"></script>
 
     <script type="text/javascript">
     $('refresh').remove();
@@ -25,7 +26,7 @@
 
     <div id="content">  
         <div class="titleback">
-            <img src="/img/banner.jpg" alt="Flightgear logo"/>
+            <img src="static/img/banner.jpg" alt="Flightgear logo"/>
         </div>
 
         <?php require 'menu.php';?>

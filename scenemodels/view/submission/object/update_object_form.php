@@ -26,8 +26,8 @@ include 'view/header.php';
 $objToUpPos = $objectToUp->getPosition();
 
 ?>
-<script src="/inc/js/update_objects.js" type ="text/javascript"></script>
-<script src="/inc/js/check_form.js" type="text/javascript"></script>
+<script src="static/inc/js/update_objects.js" type ="text/javascript"></script>
+<script src="static/inc/js/check_form.js" type="text/javascript"></script>
 <script type="text/javascript">
 /*<![CDATA[*/
 window.onload = function() {
@@ -221,8 +221,8 @@ if (!$modelMDToUp->getModelsGroup()->isStatic()) {
         </tr>
         <tr>
             <td><span title="This is the map around the object you want to update"><label>Map</label></span></td>
-            <td><object data="/map/?lon=<?php echo $objToUpPos->getLongitude(); ?>&amp;lat=<?php echo $objToUpPos->getLatitude(); ?>&amp;z=14" type="text/html" width="100%" height="225"></object></td>
-            <td><object id="map" data="/map/?lon=<?php echo $objToUpPos->getLongitude(); ?>&amp;lat=<?php echo $objToUpPos->getLatitude(); ?>&amp;z=14" type="text/html" width="100%" height="225"></object></td>
+            <td><object data="/static/map/index.html?lon=<?php echo $objToUpPos->getLongitude(); ?>&amp;lat=<?php echo $objToUpPos->getLatitude(); ?>&amp;z=14" type="text/html" width="100%" height="225"></object></td>
+            <td><object id="map" data="/static/map/index.html?lon=<?php echo $objToUpPos->getLongitude(); ?>&amp;lat=<?php echo $objToUpPos->getLatitude(); ?>&amp;z=14" type="text/html" width="100%" height="225"></object></td>
         </tr>
         <tr>
           <td><span title="Please add a short (max 100 letters) statement why you are updating this data. This will help the maintainers understand what you are doing. eg: this model was misplaced, so I'm updating it.">

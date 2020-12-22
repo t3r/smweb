@@ -88,7 +88,7 @@ require 'view/header.php';
 
         fakeCounter();
 
-        $.getJSON( "/scenemodels/stats/", function( data ) {
+        $.getJSON( " https://api.flightgear.org/scenemodels/stats/", function( data ) {
           clearTimeout(t);
           data = data || {};
           stats = data.stats || {}
