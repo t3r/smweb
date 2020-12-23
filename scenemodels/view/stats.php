@@ -1,6 +1,4 @@
 <?php
-// Including librairies
-require_once 'autoload.php';
 require 'view/header.php';
 ?>
 <script type='text/javascript' src='https://www.google.com/jsapi'></script>

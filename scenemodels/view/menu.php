@@ -8,7 +8,7 @@
         </ul>
     </li>
     <li class="mainitems">
-        <div class="headerlinks"><a href="/contribute.php">Contribute</a></div>
+        <div class="headerlinks"><a href="/app.php?c=Plain&a=contribute">Contribute</a></div>
         <ul class="submenus">
             <li><a href="/app.php?c=AddObjects&amp;a=form">Add a new object position</a></li>
             <li><a href="/app.php?c=AddObjects&amp;a=massiveform">Massive import of objects</a></li>
@@ -42,13 +42,6 @@
     <li class="mainitems">
         <div class="headerlinks"><a href="/app.php?c=Authors&amp;a=browse">Authors</a></div>
     </li>
-    <!-- mapserver unusable for now -->
-    <!--li class="mainitems">
-        <div class="headerlinks"><a href="/mapserver.php">Mapserver</a></div>
-        <ul class="submenus">
-            <li><a href="http://mapserver.flightgear.org/shpdl/">Download shapefiles</a></li>
-        </ul>
-    </li-->
     <!--li class="mainitems">
         <div class="headerlinks"><a href="/download.php">Download</a></div>
         <ul class="submenus">
@@ -59,21 +52,21 @@
         </ul>
     </li-->
     <li class="mainitems">
-        <div class="headerlinks"><a href="/stats.php">Statistics</a></div>
+        <div class="headerlinks"><a href="/app.php?c=Plain&a=statistics">Statistics</a></div>
         <ul class="submenus">
-            <li><a href="map/">Coverage</a></li>
+            <li><a href="static/map/index.html">Coverage</a></li>
             <!--li><a href="/stats/">Access</a></li-->
         </ul>
     </li>
-    <li class="mainitems">
+    <!--li class="mainitems">
         <div class="headerlinks"><a href="/rss/">RSS</a></div>
-    </li>
+    </li-->
     <li class="mainitems">
-        <div class="headerlinks"><a href="/ts/status/">TS-Status</a></div>
+        <div class="headerlinks"><a href="https://scenery2.flightgear.org/#tsstatus">TS-Status</a></div>
     </li>
-    <li class="mainitems">
+    <!--li class="mainitems">
         <div class="headerlinks"><a href="/jenkins/">Build Bot</a></div>
-    </li>
+    </li-->
 </ul>
 
 <div id="clearmenu" style="clear: left"></div>

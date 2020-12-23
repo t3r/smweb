@@ -1,6 +1,4 @@
 <?php
-require_once 'autoload.php';
-$modelDaoRO = \dao\DAOFactory::getInstance()->getModelDaoRO();
 require 'view/header.php';
 ?>
 <h1>How to contribute</h1>
