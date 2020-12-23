@@ -23,8 +23,10 @@ services:
       - "PGDATABASE=scenemodels"
       - "PGUSER=flightgear"
       - "PGPASSWORD=secret"
-      # extra args to sendmail (busybox implementation) to use TLS
-      # adjust mailhost.example.com, SmtpUser and SmtpPassword
-      - "MAILARGS=-v -fnoreply@flightgear.org -H 'exec openssl s_client -quiet -tls1  -connect mailhost.example.com:465' -amLOGIN '-auSmtpUser' '-apSmtpPassword'"
+      - "SMTPHOST=mail.server.net"
+      - "SMTPPORT=25"
+      - "SMTPUSER=foobar"
+      - "SMTPPASSWORD=supersecret"
+      - "MAINTAINERS=maintainers@recipient.net"
 volumes:
   scenemodels:
