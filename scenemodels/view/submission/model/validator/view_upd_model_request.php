@@ -21,8 +21,6 @@
 
 
 // Inserting libs
-include_once 'inc/geshi/geshi.php';
-
 
 $pageTitle = "Models update form";
 

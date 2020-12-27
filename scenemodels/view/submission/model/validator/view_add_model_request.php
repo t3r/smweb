@@ -24,7 +24,6 @@ $newObj = $request->getNewObject();
 $newObjPos = $newObj->getPosition();
         
 // Inserting libs
-include_once 'inc/geshi/geshi.php';
 $pageTitle = "Model Submission Form";
 
 include 'view/header.php';
