@@ -2,10 +2,10 @@
 $pageTitle = "Models addition form";
 require 'view/header.php';
 ?>
-<script type="text/javascript" src="/inc/js/update_objects.js"></script>
-<script type="text/javascript" src="/inc/js/check_form.js"></script>
-<script type="text/javascript" src="/inc/js/jquery.multifile.js"></script>
-<script type="text/javascript" src="/inc/js/submit.js"></script>
+<script type="text/javascript" src="static/inc/js/update_objects.js"></script>
+<script type="text/javascript" src="static/inc/js/check_form.js"></script>
+<script type="text/javascript" src="static/inc/js/jquery.multifile.js"></script>
+<script type="text/javascript" src="static/inc/js/submit.js"></script>
 <script type="text/javascript">
 /*<![CDATA[*/
 var ac3DSelected = false;
@@ -99,8 +99,8 @@ $(function() {
 });
 /*]]>*/
 </script>
-<link rel="stylesheet" href="/css/jquery-ui.min.css" type="text/css"/>
-<script src="/inc/js/jquery-ui.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="static/css/jquery-ui.min.css" type="text/css"/>
+<script src="static/inc/js/jquery-ui.min.js" type="text/javascript"></script>
 
 <div id="loadingScreen" style="display:none"></div>
 <div id="submit-dialog" style="display:none">

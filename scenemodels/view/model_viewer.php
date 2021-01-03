@@ -19,7 +19,7 @@
             height: 100%;
             overflow: hidden;
             display: none;
-            background: url('img/loading.gif') no-repeat center center;
+            background: url('../img/loading.gif') no-repeat center center;
             z-index: 100;
         }
     </style>
