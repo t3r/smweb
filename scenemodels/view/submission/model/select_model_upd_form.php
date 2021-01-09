@@ -1,7 +1,7 @@
 <?php
 require 'view/header.php';
 ?>
-<script type="text/javascript" src="inc/js/update_objects.js"></script>
+<script type="text/javascript" src="static/inc/js/update_objects.js"></script>
 
 <h1>Choose model to update</h1>
 <p>
@@ -13,7 +13,7 @@ require 'view/header.php';
     <tr>
         <td><label for="model_group_id">Model's family<em>*</em><span>This is the family name of the object.</span></label></td>
         <td>
-            <select id="model_group_id" name="model_group_id" onchange="update_models(); validateTabs();">
+            <select id="model_group_id" name="model_group_id" onchange="update_models();">
                 <option value="0">Please select a family</option>
                 <option value="0">----</option>
 <?php
