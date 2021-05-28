@@ -97,6 +97,47 @@ else {
         </tr>
         <tr>
           <td>
+            <span title="This is the usage of the object you want to update while it defines the scenery export directory ('Objects' will be the default). If unsure, don't select a value (keep &lt;default&gt;)."><label for="new_usage_id">Object's usage<em>*</em></label></span>
+          </td>
+          <td><?php echo htmlspecialchars($usages[$objectToUp->getUsageId()]); ?></td>
+          <td>
+              <select name="new_usage_id" id="new_usage_id">
+              <?php
+              for ($index = 0; $index < count($usages); $index++) {
+                  $v = htmlspecialchars($usages[$index]);
+                  if ($index == $objectToUp->getUsageId()) {
+                      echo "<option value=\"".$index."\" selected=\"selected\">".$v."</option>";
+                  } else {
+                      echo "<option value=\"".$index."\">".$v."</option>";
+                  }
+              }
+              ?>
+              </select>
+          </td>
+        </tr>
+            <tr>
+              <td>
+                <span title="This is the STG token assigned to this object and to be used during scenery export. If unsure, don't select a token (keep &lt;default&gt;) which lets the exporter script decide which token to use.">
+                <label for="new_token_id">Object's STG token<em>*</em></label></span>
+              </td>
+              <td><?php echo htmlspecialchars($tokens[$objectToUp->getTokenId()]); ?></td>
+              <td>
+                  <select name="new_token_id" id="new_token_id">
+                  <?php
+                  for ($index = 0; $index < count($tokens); $index++) {
+                      $v = htmlspecialchars($tokens[$index]);
+                      if ($index == $objectToUp->getTokenId()) {
+                          echo "<option value=\"".$index."\" selected=\"selected\">".$v."</option>";
+                      } else {
+                          echo "<option value=\"".$index."\">".$v."</option>";
+                      }
+                  }
+                  ?>
+                  </select>
+              </td>
+            </tr>
+        <tr>
+          <td>
             <span title="This is the model name of the object you want to update, ie the name as it's supposed to appear in the .stg file.">
             <label for="modelId">Model name<em>*</em></label></span>
           </td>

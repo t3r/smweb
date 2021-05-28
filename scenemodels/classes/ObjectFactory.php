@@ -31,7 +31,7 @@ class ObjectFactory {
     }
     
     public function createObject($id, $modelId, $lon, $lat, $countryCode,
-            $elevOffset, $orientation, $group, $desc) {
+            $elevOffset, $orientation, $group, $desc, $usageId = 0, $tokenId = 0) {
         $country = $this->objectDaoRO->getCountry($countryCode);
         
         $object = new \model\TheObject();
@@ -45,7 +45,8 @@ class ObjectFactory {
         $object->getPosition()->setOrientation($orientation);
         $object->setDescription($desc);
         $object->setGroupId($group);
-        
+        $object->setUsageId($usageId);
+        $object->setTokenId($tokenId);
         return $object;
     }
 }

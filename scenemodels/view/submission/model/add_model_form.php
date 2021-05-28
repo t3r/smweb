@@ -159,6 +159,44 @@ $(function() {
                     </td>
                 </tr>
                 <tr>
+                    <td style="width: 200px;">
+                        <label for="ob_usage_id">Model's usage<em>*</em><span>This is the usage of the object you want to add while it defines the scenery export directory ("Objects" will be the default). If unsure, don't select a value (keep &lt;default&gt;).</span></label>
+                    </td>
+                    <td>
+                        <select name="ob_usage_id" id="ob_usage_id">
+                            <?php
+                            for ($index = 0; $index < count($usages); $index++) {
+                                $v = htmlspecialchars($usages[$index]);
+                                if ($index == 0) {
+                                    echo "<option value=\"".$index."\" selected=\"selected\">".$v."</option>";
+                                } else {
+                                    echo "<option value=\"".$index."\">".$v."</option>";
+                                }
+                            }
+                            ?>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;">
+                        <label for="ob_token_id">Model's STG token<em>*</em><span>This is the STG token assigned to this object and to be used during scenery export. If unsure, don't select a token (keep &lt;default&gt;) which lets the exporter script decide which token to use.</span></label>
+                    </td>
+                    <td>
+                        <select name="ob_token_id" id="ob_token_id">
+                            <?php
+                            for ($index = 0; $index < count($tokens); $index++) {
+                                $v = htmlspecialchars($tokens[$index]);
+                                if ($index == 0) {
+                                    echo "<option value=\"".$index."\" selected=\"selected\">".$v."</option>";
+                                } else {
+                                    echo "<option value=\"".$index."\">".$v."</option>";
+                                }
+                            }
+                            ?>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
                     <td>
                         <label for="mo_name">Model name<em>*</em><span>Please add a short (max 100 letters) name of your model (eg : Cornet antenna radome - Brittany - France).</span></label>
                     </td>

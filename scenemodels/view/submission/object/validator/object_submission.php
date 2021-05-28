@@ -32,6 +32,19 @@ case "model\RequestObjectUpdate":
         echo " style=\"background-color: rgb(255, 200, 0)\"";
     }
     echo "><td>Object's model</td><td>".htmlspecialchars($oldModelMD->getName())."</td><td>".htmlspecialchars($newModelMD->getName())."</td></tr>";
+
+    echo "<tr";
+    if ($oldObject->getUsageId() != $newObject->getUsageId()) {
+        echo " style=\"background-color: rgb(255, 200, 0)\"";
+    }
+    echo "><td>Object's Usage</td><td>".htmlspecialchars($usages[$oldObject->getUsageId()])."</td><td>".htmlspecialchars($usages[$newObject->getUsageId()])."</td></tr>";
+
+    echo "<tr";
+    if ($oldObject->getTokenId() != $newObject->getTokenId()) {
+        echo " style=\"background-color: rgb(255, 200, 0)\"";
+    }
+    echo "><td>Object's STG token</td><td>".htmlspecialchars($tokens[$oldObject->getTokenId()])."</td><td>".htmlspecialchars($tokens[$newObject->getTokenId()])."</td></tr>";
+
     echo "<tr><td>Thumbnail</td><td><img src='app.php?c=Models&amp;a=thumbnail&amp;id=".$oldModelMD->getId()."' alt=''/></td>".
             "<td><img src='app.php?c=Models&amp;a=thumbnail&amp;id=".$newModelMD->getId()."' alt=''/></td></tr>";
     echo "<tr";

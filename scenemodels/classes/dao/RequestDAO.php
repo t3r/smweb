@@ -136,7 +136,9 @@ class RequestDAO extends PgSqlDAO implements IRequestDAO {
                      'offset'=>(empty($offset)?'NULL':$offset),
                      'orientation'=>$objPos->getOrientation(),
                      'country'=>$object->getCountry()->getCode(),
-                     'modelId'=>$object->getModelId());
+                     'modelId'=>$object->getModelId(),
+                     'usageId'=>$object->getUsageId(),
+                     'tokenId'=>$object->getTokenId());
     }
     
     private function arrayRequestObjectUpdate($request) {
@@ -151,7 +153,9 @@ class RequestDAO extends PgSqlDAO implements IRequestDAO {
                      'orientation'=>$newObjPos->getOrientation(),
                      'country'=>$newObj->getCountry()->getCode(),
                      'modelId'=>$newObj->getModelId(),
-                     'objectId'=>$newObj->getId());
+                     'objectId'=>$newObj->getId(),
+                     'usageId'=>$newObj->getUsageId(),
+                     'tokenId'=>$newObj->getTokenId());
     }
     
     private function arrayRequestObjectDelete($request) {
@@ -365,7 +369,8 @@ class RequestDAO extends PgSqlDAO implements IRequestDAO {
         
         return $objectFactory->createObject(-1, $addReqArray['modelId'],
                $addReqArray['longitude'], $addReqArray['latitude'], $addReqArray['country'], 
-               $addReqArray['offset'], $addReqArray['orientation'], 1, $addReqArray['description']);
+               $addReqArray['offset'], $addReqArray['orientation'], 1, $addReqArray['description'],
+               $addReqArray['usageId'], $addReqArray['tokenId']);
     }
     
     private function getRequestMassiveObjectsAddFromRow($objRequests) {
@@ -387,7 +392,8 @@ class RequestDAO extends PgSqlDAO implements IRequestDAO {
 
         $newObject = $objectFactory->createObject($updReqArray['objectId'], $updReqArray['modelId'],
                $updReqArray['longitude'], $updReqArray['latitude'], $updReqArray['country'], 
-               $updReqArray['offset'], $updReqArray['orientation'], 1, $updReqArray['description']);
+               $updReqArray['offset'], $updReqArray['orientation'], 1, $updReqArray['description'],
+               $updReqArray['usageId'],$updReqArray['tokenId']);
 
         $requestObjUp = new \model\RequestObjectUpdate();
         $requestObjUp->setContributorEmail('');
